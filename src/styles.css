@@ -9,4 +9,9 @@ body {
     height: 100dvh;
     background: linear-gradient(to bottom right, #252850, #fff, #252850);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+:root{
+    --first-color: #252850;
 }

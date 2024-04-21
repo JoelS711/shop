@@ -1,1 +1,26 @@
-<p>login works!</p>
+<section class="login">
+    <div class="login__card">
+        <span><b>WELCOME</b></span>
+        <figure class="login__figure">
+            <img src="../../../assets/userLogin.png" alt="User Login">
+        </figure>
+        <div class="login__input">
+            <figure class="login__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="#252850" d="M234.38 210a123.36 123.36 0 0 0-60.78-53.23a76 76 0 1 0-91.2 0A123.36 123.36 0 0 0 21.62 210a12 12 0 1 0 20.77 12c18.12-31.32 50.12-50 85.61-50s67.49 18.69 85.61 50a12 12 0 0 0 20.77-12M76 96a52 52 0 1 1 52 52a52.06 52.06 0 0 1-52-52"/></svg>
+            </figure>
+            <input type="text" class="login__input--input" placeholder="Username" [(ngModel)]="user">
+        </div>
+        <div class="login__input">
+            <figure class="login__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#252850" d="M7 15q1.25 0 2.125-.875T10 12q0-1.25-.875-2.125T7 9q-1.25 0-2.125.875T4 12q0 1.25.875 2.125T7 15m0 3q-2.5 0-4.25-1.75T1 12q0-2.5 1.75-4.25T7 6q2.025 0 3.538 1.15T12.65 10h8.375L23 11.975l-3.5 4L17 14l-2 2l-2-2h-.35q-.625 1.8-2.175 2.9T7 18"/></svg>
+            </figure>
+            <input type="password" class="login__input--input" placeholder="Password" [(ngModel)]="pass">
+        </div>
+        <div class="login__button">
+            <button type="button" class="login__button--button" (click)="comparar()">SING IN</button>
+        </div>
+        <div *ngIf="correct==0" class="login__alert">
+            *user or password wrong*
+          </div>
+    </div>
+</section>
