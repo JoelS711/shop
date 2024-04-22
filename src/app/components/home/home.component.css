@@ -1,0 +1,22 @@
+.home{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.home__titles{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(37, 40, 80, 0.5);
+    color: #fff;
+    padding: 2rem;
+}
+
+
+.home__subtitle{
+    margin-bottom: 0;
+    text-align: center;
+}
