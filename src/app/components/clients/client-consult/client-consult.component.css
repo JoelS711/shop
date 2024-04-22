@@ -1,35 +1,37 @@
-.login {
+.consultClient{
+    width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-
 }
 
-.login__card {
-    background-color: var(--first-color);
+.consultClient__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.consultClient__card{
+    background:var(--first-color);
     border-radius: 1rem;
-    width: 18rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-
 }
 
-.login__input {
-    background-color: #fff;
-    width: 100%;
-    border-radius: 1rem;
+.consultClient__icon{
     display: flex;
-}
-
-.login__icon {
+    border-radius: 1rem;
+    background-color: #fff;
     padding: .2rem;
+    gap: .2rem;
 }
 
-.login__input--input {
+.consultClient__input--input{
     border: none;
     outline: none;
     font-family: inherit;
@@ -39,6 +41,3 @@
     border-radius: 1rem;
 }
 
-.login__alert {
-    color: red;
-}

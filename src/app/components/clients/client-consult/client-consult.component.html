@@ -1,0 +1,48 @@
+<section class="consultClient">
+    <app-navbar></app-navbar>
+    <main class="consultClient__container">
+        <div class="consultClient__card">
+            <span class="consultClient__title">
+              <b>CONSULT CLIENT</b>  
+            </span>
+            <figure class="consultClient__figure">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 13 16"><path fill="#ffffff" d="M4 10h5c1.66 0 3 1.34 3 3v2H1v-2c0-1.66 1.34-3 3-3m0-6h5v2.5a2.5 2.5 0 0 1-5 0zm5 0c.55 0 1 .45 1 1s-.45 1-1 1zM4 6c-.55 0-1-.45-1-1s.45-1 1-1z"/><path fill="#ffffff" d="M4.12 4.12h-.5C2.87 3.5 3 2.55 3 1.75s.5-.26 1-.26s1 .5 1 .5c-.88 0-1-1-1-1h3c1.1 0 2 .9 2 2h.5s.25.75-.12 1.25l-5.25-.12Z"/></svg>
+            </figure>
+            <div class="consultClient__input">
+                <figure class="consultClient__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#252850" d="M14 13h5v-2h-5zm0-3h5V8h-5zm-9 6h8v-.55q0-1.125-1.1-1.787T9 13q-1.8 0-2.9.663T5 15.45zm4-4q.825 0 1.413-.587T11 10q0-.825-.587-1.412T9 8q-.825 0-1.412.588T7 10q0 .825.588 1.413T9 12m-5 8q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm0-2h16V6H4zm0 0V6z"/></svg>
+                    <input type="text" class="consultClient__input--input" placeholder="Identification" [(ngModel)]="cedulasearch">
+                </figure>
+                <span class="input-group-text">
+                    <i *ngIf="cedulasearch!=undefined && cedulasearch!=''"
+                        class="consultClient__input--true"></i>
+
+                    <i *ngIf="cedulasearch==undefined || cedulasearch==''"
+                        class="consultClient__input--false"></i>
+                </span>
+            </div>
+            <button (click)="buscarCliente()" class="consultClient__btn" type="submit"
+            >SEARCH</button>
+        </div>
+        <table class="consultClient__table" *ngIf="contenido">
+            <thead>
+                <tr>
+                    <th class="consultClient__table--data">Identification</th>
+                    <th class="consultClient__table--data">Address</th>
+                    <th class="consultClient__table--data">Email</th>
+                    <th class="consultClient__table--data">Name</th>
+                    <th class="consultClient__table--data">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="consultClient__table--data">{{contenido.identification}}</td>
+                <td class="consultClient__table--data">{{contenido.address}}</td>
+                <td class="consultClient__table--data">{{contenido.email}}</td>
+                <td class="consultClient__table--data">{{contenido.name}}</td>
+                <td class="consultClient__table--data">{{contenido.phone}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </main>
+</section>
