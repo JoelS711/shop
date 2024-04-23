@@ -37,3 +37,13 @@ button:hover{
     background-color: #7b98df;
     border: 1px solid #fff;
 }
+
+input{
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--first-color);
+    width: 100%;
+    border-radius: 1rem;
+}

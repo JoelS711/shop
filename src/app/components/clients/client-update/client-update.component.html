@@ -1,1 +1,116 @@
-<p>client-update works!</p>
+<section class="updateClient">
+    <app-navbar></app-navbar>
+    <main class="updateClient__container">
+        <div class="updateClient__card">
+            <span class="updateClient__title">
+                <b>UPDATE CLIENT</b>
+            </span>
+            <figure class="updateClient__figure">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24">
+                    <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path d="M2 21a8 8 0 0 1 10.434-7.62" />
+                        <circle cx="10" cy="8" r="5" />
+                        <circle cx="18" cy="18" r="3" />
+                        <path
+                            d="m19.5 14.3l-.4.9m-2.2 5.6l-.4.9m5.2-2.2l-.9-.4m-5.6-2.2l-.9-.4m7.4 0l-.9.4m-5.6 2.2l-.9.4m5.2 2.2l-.4-.9m-2.2-5.6l-.4-.9" />
+                    </g>
+                </svg>
+            </figure>
+            <div class="updateClient__inputs">
+                <div class="updateClient__input">
+                    <figure class="updateClient__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#252850"
+                                d="M14 13h5v-2h-5zm0-3h5V8h-5zm-9 6h8v-.55q0-1.125-1.1-1.787T9 13q-1.8 0-2.9.663T5 15.45zm4-4q.825 0 1.413-.587T11 10q0-.825-.587-1.412T9 8q-.825 0-1.412.588T7 10q0 .825.588 1.413T9 12m-5 8q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm0-2h16V6H4zm0 0V6z" />
+                        </svg>
+                        <input type="text" placeholder="Identification" [(ngModel)]="cedulaupdate">
+                        <span class="updateClient__spans">
+                            <span *ngIf="cedulaupdate!=undefined && cedulaupdate!=''">&#9989;</span>
+
+                            <span *ngIf="cedulaupdate==undefined || cedulaupdate==''">&#10060;</span>
+                        </span>
+                    </figure>
+
+                </div>
+
+                <div class="updateClient__input">
+                    <figure class="updateClient__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#252850"
+                                d="M12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7m0 2a5 5 0 0 0-5 5c0 1 0 3 5 9.71C17 12 17 10 17 9a5 5 0 0 0-5-5" />
+                        </svg>
+                        <input type="text" placeholder="Address" [(ngModel)]="direccionupdate">
+                        <span class="updateClient__spans">
+
+                            <span *ngIf="direccionupdate!=undefined && direccionupdate!=''">&#9989;</span>
+
+                            <span *ngIf="direccionupdate==undefined || direccionupdate==''">&#10060;</span>
+                        </span>
+                    </figure>
+                </div>
+
+                <div class="updateClient__input">
+                    <figure class="updateClient__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" stroke="#252850" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2">
+                                <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <path d="m3 7l9 6l9-6" />
+                            </g>
+                        </svg>
+                        <input type="text" class="form-control" placeholder="E-mail" [(ngModel)]="emailupdate">
+                        <span class="updateClient__spans">
+
+                            <span *ngIf="emailupdate!=undefined && emailupdate!=''">&#9989;</span>
+
+                            <span *ngIf="emailupdate==undefined || emailupdate==''">&#10060;</span>
+
+                        </span>
+                    </figure>
+                </div>
+
+                <div class="updateClient__input">
+                    <figure class="updateClient__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <circle cx="12" cy="6" r="4" fill="#252850" />
+                            <path fill="#252850"
+                                d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
+                        </svg>
+                        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="nombreupdate">
+                        <span class="updateClient__spans">
+
+                            <span *ngIf="nombreupdate!=undefined && nombreupdate!=''">&#9989;</span>
+
+                            <span *ngIf="nombreupdate==undefined || nombreupdate==''">&#10060;</span>
+
+                        </span>
+                    </figure>
+                </div>
+
+                <div class="updateClient__input">
+                    <figure class="updateClient__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#252850"
+                                d="M10 20h4v-1h-4zm-3 3q-.825 0-1.412-.587T5 21V3q0-.825.588-1.412T7 1h10q.825 0 1.413.588T19 3v18q0 .825-.587 1.413T17 23zm0-5v3h10v-3zm0-2h10V6H7zM7 4h10V3H7zm0 14v3zM7 4V3z" />
+                        </svg>
+                        <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="telefonoupdate">
+                        <span class="updateClient__spans">
+
+                            <span *ngIf="telefonoupdate!=undefined && telefonoupdate!=''">&#9989;</span>
+
+                            <span *ngIf="telefonoupdate==undefined || telefonoupdate==''">&#10060;</span>
+
+                        </span>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="createClient__button">
+                <button (click)="actualizarCliente()" type="submit" name="btnActualizar">UPDATE</button>
+                <br />
+                <span *ngIf="codeput==200" style="color: white">update successfully</span>
+                <span *ngIf="codeput==204" style="color: red">client doesn't exists</span>
+            </div>
+        </div>
+    </main>
+</section>

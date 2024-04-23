@@ -1,1 +1,33 @@
-<p>client-delete works!</p>
+<section class="deleteClient">
+    <app-navbar></app-navbar>
+    <main class="deleteClient__container">
+        <div class="deleteClient__card">
+            <span class="deleteClient__title">
+                <b>DELETE CLIENT</b>
+            </span>
+            <figure class="deleteClient__figure">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24"><g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M22 19h-6"/></g></svg>
+            </figure>
+            <div class="deleteClient__input">
+                <figure class="deleteClient__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#252850"
+                            d="M14 13h5v-2h-5zm0-3h5V8h-5zm-9 6h8v-.55q0-1.125-1.1-1.787T9 13q-1.8 0-2.9.663T5 15.45zm4-4q.825 0 1.413-.587T11 10q0-.825-.587-1.412T9 8q-.825 0-1.412.588T7 10q0 .825.588 1.413T9 12m-5 8q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm0-2h16V6H4zm0 0V6z" />
+                    </svg>
+                    <input type="text" class="deleteClient__input--input" placeholder="Identification"
+                        [(ngModel)]="ceduladelete">
+                    <span class="deleteClient__spans">
+                        <span *ngIf="ceduladelete!=undefined && ceduladelete!=''"
+                            >&#9989;</span>
+
+                        <span *ngIf="ceduladelete==undefined || ceduladelete==''"
+                            >&#10060;</span>
+                    </span>
+                </figure>
+            </div>
+            <button (click)="eliminarCliente()" class="deleteClient__btn" type="submit">DELETE</button>
+            <span *ngIf="codedelete==500" style="color: white">client doesn't exist</span>
+            <span *ngIf="codedelete==202" style="color: white">
+                successful deletion
+            </span>
+        </div>
