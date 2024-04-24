@@ -25,4 +25,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const rountingComponents = [LoginComponent, SalesComponent, HomeComponent,ClientConsultComponent,ClientCreateComponent,ClientUpdateComponent,ClientDeleteComponent]
+export const rountingComponents = [LoginComponent, SalesComponent, HomeComponent,ClientConsultComponent,ClientCreateComponent,ClientUpdateComponent,ClientDeleteComponent, ClientDeleteComponent]

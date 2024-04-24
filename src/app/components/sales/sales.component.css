@@ -1,0 +1,233 @@
+/*Estilos Especiales para el span e input*/
+
+.especial__spans {
+    background-color: #a6bbea;
+    color: #000;
+    padding: .2rem;
+    border-radius: 0.6rem 0 0 0.6rem;
+    border-right: 1px solid black;
+    font-weight: bold;
+}
+
+.especial__input {
+    border-radius: 0 0.6rem 0.6rem 0;
+    color: #000;
+    padding: .2rem;
+}
+
+
+/*Read Only para los inputs, cambiar background*/
+.sales__sataSales--input,
+.sales__dataClient--inputname,
+.sales__dataProduct--nameinput,
+.sales__dataProduct--priceinput,
+.sales__totals--totalsaleinput,
+.sales__totals--totalivainput,
+.sales__totals--totalinput {
+    background-color: #d1d1d1;
+}
+
+
+/*------------------------------------------*/
+.sales {
+    display: flex;
+    height: 100vh;
+}
+
+.sales__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+
+.sales__card {
+    background-color: var(--first-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sales__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sales__dataSale {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.sales__dataSale--figure {
+    display: flex;
+    align-items: center;
+}
+
+.sales__dataSales--content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sales__sataSales--input {
+    width: 10rem;
+}
+
+.sales__sataSales--selectcitys {
+    border-radius: 0 0.6rem 0.6rem 0;
+    color: #000;
+    font-size: inherit;
+    padding: .2rem;
+    border: none;
+    outline: none;
+}
+
+.sales__sataSales--city {
+    display: flex;
+}
+
+.sales__sataSales--count {
+    display: flex;
+}
+
+
+
+.sales__dataClient {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.sales__dataClient--figure {
+    display: flex;
+    align-items: center;
+}
+
+.sales__dataClient--content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sales__dataClient--inputname {
+    width: 30rem;
+}
+
+
+
+.sales__dataClient--identity {
+    display: flex;
+}
+
+.sales__dataClient--name {
+    display: flex;
+}
+
+hr {
+    height: .2rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 4px;
+
+}
+
+.sales__dataProduct {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sales__dataProduct--content {
+    display: flex;
+    gap: 1rem;
+}
+
+.sales__dataProduct--button {
+    padding-left: .4rem;
+}
+
+.sales__dataProduct--btn {
+    width: 2.6rem;
+    height: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sales__dataProduct--cod,
+.sales__dataProduct--name,
+.sales__dataProduct--quantity,
+.sales__dataProduct--price {
+    display: flex;
+    align-items: center;
+}
+
+
+.sales__dataProduct--input {
+    width: 4rem;
+}
+
+.sales__dataProduct--nameinput {
+    width: 16rem;
+}
+
+
+.sales__dataProduct--quantityinput {
+    width: 4rem;
+}
+
+.sales__dataProduct--priceinput {
+    width: 6rem;
+}
+
+.sales__totals {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.sales__totaltotal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.sales__totals--totalsale,
+.sales__totals--totaliva,
+.sales__totals--total {
+    display: flex;
+    width: 100%;
+}
+
+.sales__totals--totalsaleinput,
+.sales__totals--totalivainput,
+.sales__totals--totalinput {
+    width: 100%;
+}
+
+.sales__buttons {
+    display: flex;
+    gap: 2rem;
+}
+
+.sales__button--btnpost {
+    background-color: #00ff00;
+    color: #000;
+    border: 2px solid white;
+}
+
+.sales__button--btnreload {
+    background-color: #ffd500;
+    color: #000;
+    border: 2px solid white;
+}
