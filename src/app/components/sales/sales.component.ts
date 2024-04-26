@@ -21,7 +21,6 @@ export class SalesComponent implements OnInit {
     this.clientehttp.get(this.apiURL + "sales/consecutive").subscribe((data) => {
       this.consecutivo = data;
       this.consecutivo++;
-      console.log(this.consecutivo);
     }
     )
   }
@@ -31,7 +30,6 @@ export class SalesComponent implements OnInit {
   getCliente() {
     this.clientehttp.get(this.apiURLClient + "clients/identification/" + this.cedulacliente).subscribe((data) => {
       this.clientedata = data;
-      console.log(this.clientedata);
     }
     )
   }
@@ -48,21 +46,18 @@ export class SalesComponent implements OnInit {
         this.clientehttp.get(this.apiURLProduct + "products/code/" + this.codprod1)
           .subscribe((data) => {
             this.product1 = data;
-            console.log(this.product1);
           });
         break;
       case 2:
         this.clientehttp.get(this.apiURLProduct + "products/code/" + this.codprod2)
           .subscribe((data) => {
             this.product2 = data;
-            console.log(this.product2);
           });
         break;
       case 3:
         this.clientehttp.get(this.apiURLProduct + "products/code/" + this.codprod3)
           .subscribe((data) => {
             this.product3 = data;
-            console.log(this.product3);
           });
         break;
 

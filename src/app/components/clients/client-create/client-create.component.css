@@ -37,3 +37,9 @@
     align-items: center;
     gap: .6rem;
 }
+
+.createClient__button{
+display: flex;
+flex-direction: column;
+align-items: center;
+}

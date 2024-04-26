@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    rountingComponents,
+    rountingComponents
   ],
   imports: [
     BrowserModule,

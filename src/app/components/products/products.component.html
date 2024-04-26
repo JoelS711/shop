@@ -1,0 +1,56 @@
+<section class="products">
+    <app-navbar></app-navbar>
+    <div class="products__container">
+        <div class="products__card">
+            <h3 class="products__card__title">UPLOAD PRODUCTS</h3>
+            <figure class="products__card__figure">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24"><path fill="#ffffff" d="M11.5 16.23h1v-4.7l2.12 2.12l.707-.708L12 9.615l-3.288 3.289l.707.708L11.5 11.53zM4.615 19q-.69 0-1.152-.462Q3 18.075 3 17.385V6.615q0-.69.463-1.152Q3.925 5 4.615 5h4.981l2 2h7.789q.69 0 1.152.463q.463.462.463 1.152v8.77q0 .69-.462 1.152q-.463.463-1.153.463zm0-1h14.77q.269 0 .442-.173t.173-.442v-8.77q0-.269-.173-.442T19.385 8h-8.19l-2-2h-4.58q-.269 0-.442.173T4 6.615v10.77q0 .269.173.442t.442.173M4 18V6z"/></svg>
+                <input type="file" class="products__card__figure--input" (change)="onChange($event)" accept=".csv">
+                <button class="products__card__figure--btn" (click)="onUpload()">UPLOAD</button>
+            </figure>
+            <div class="products__alerts">
+                <span *ngFor="let dato of resultados; let i=index; let ultimo=last" style="color: white">
+                    <div class="alert alert-success" role="alert" *ngIf="ultimo">
+                        file uploaded successfully
+                      </div>
+                      <div class="alert alert-success" role="alert" *ngIf="dato==500">
+                        Error del servidor, comuniquese con el administrador
+                      </div>
+                      <div class="alert alert-success" role="alert" *ngIf="dato==400 || dato==404">
+                        Error  en la solicitud
+                      </div>
+                    
+                </span>
+            </div>
+
+        </div>
+        <div class="products__data" *ngIf="contenido">
+            <figure class="products__data__figure">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="#ffffff" d="M76 64a12 12 0 0 1 12-12h128a12 12 0 0 1 0 24H88a12 12 0 0 1-12-12m140 52H88a12 12 0 0 0 0 24h128a12 12 0 0 0 0-24m0 64H88a12 12 0 0 0 0 24h128a12 12 0 0 0 0-24M44 112a16 16 0 1 0 16 16a16 16 0 0 0-16-16m0-64a16 16 0 1 0 16 16a16 16 0 0 0-16-16m0 128a16 16 0 1 0 16 16a16 16 0 0 0-16-16"/></svg>
+                <h4 class="products__data__title">List of Products</h4>
+            </figure>
+            <table class="products__data__table">
+                <thead>
+                    <tr>
+                      <th class="products__data__table--th">Code</th>
+                      <th class="products__data__table--th">Name</th>
+                      <th class="products__data__table--th">Nit Provider</th>
+                      <th class="products__data__table--th">Price</th>
+                      <th class="products__data__table--th">IVA</th>
+                      <th class="products__data__table--th">Sale Price</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <tr *ngFor="let producto of contenido" class="">
+                    <td class="products__data__table--td">{{producto.code}}</td>
+                    <td class="products__data__table--td">{{producto.name}}</td>
+                    <td class="products__data__table--td">{{producto.nitprovider}}</td>
+                    <td class="products__data__table--td">{{producto.purchaseprice}}</td>
+                    <td class="products__data__table--td">{{producto.iva}}</td>
+                    <td class="products__data__table--td">{{producto.saleprice}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>

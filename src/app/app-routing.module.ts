@@ -7,7 +7,7 @@ import { ClientConsultComponent } from './components/clients/client-consult/clie
 import { ClientCreateComponent } from './components/clients/client-create/client-create.component';
 import { ClientUpdateComponent } from './components/clients/client-update/client-update.component';
 import { ClientDeleteComponent } from './components/clients/client-delete/client-delete.component';
-
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'client-create', component: ClientCreateComponent },
   { path: 'client-update', component: ClientUpdateComponent },
   { path: 'client-delete', component: ClientDeleteComponent },
+  { path: 'products', component: ProductsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
@@ -25,4 +26,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const rountingComponents = [LoginComponent, SalesComponent, HomeComponent,ClientConsultComponent,ClientCreateComponent,ClientUpdateComponent,ClientDeleteComponent, ClientDeleteComponent]
+export const rountingComponents = [LoginComponent, SalesComponent, HomeComponent,ClientConsultComponent,ClientCreateComponent,ClientUpdateComponent,ClientDeleteComponent, ClientDeleteComponent, ProductsComponent]
