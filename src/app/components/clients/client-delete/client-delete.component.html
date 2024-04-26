@@ -26,8 +26,8 @@
                 </figure>
             </div>
             <button (click)="eliminarCliente()" class="deleteClient__btn" type="submit">DELETE</button>
-            <span *ngIf="codedelete==500" style="color: white">client doesn't exist</span>
-            <span *ngIf="codedelete==202" style="color: white">
+            <span *ngIf="codedelete==500" style="color: rgb(255, 0, 0)">client doesn't exist</span>
+            <span *ngIf="codedelete==202" style="color: rgb(80, 255, 0)">
                 successful deletion
             </span>
         </div>

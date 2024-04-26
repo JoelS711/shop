@@ -9,14 +9,14 @@
                 <button class="products__card__figure--btn" (click)="onUpload()">UPLOAD</button>
             </figure>
             <div class="products__alerts">
-                <span *ngFor="let dato of resultados; let i=index; let ultimo=last" style="color: white">
+                <span *ngFor="let dato of resultados; let i=index; let ultimo=last" style="color: rgb(80, 255, 0)">
                     <div class="alert alert-success" role="alert" *ngIf="ultimo">
                         file uploaded successfully
                       </div>
                       <div class="alert alert-success" role="alert" *ngIf="dato==500">
                         Error del servidor, comuniquese con el administrador
                       </div>
-                      <div class="alert alert-success" role="alert" *ngIf="dato==400 || dato==404">
+                      <div class="alert alert-success" role="alert" *ngIf="dato==400 || dato==404" style="color: rgb(255, 0, 0)">
                         Error  en la solicitud
                       </div>
                     
