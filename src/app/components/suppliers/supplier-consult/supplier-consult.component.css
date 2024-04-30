@@ -1,0 +1,42 @@
+.consultSupplier{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.consultSupplier__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.consultSupplier__card{
+    background:var(--first-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.consultSupplier__icon{
+    display: flex;
+    border-radius: 1rem;
+    background-color: #fff;
+    padding: .2rem;
+    gap: .2rem;
+}
+
+.consultSupplier__input--input{
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--first-color);
+    width: 100%;
+    border-radius: 1rem;
+}

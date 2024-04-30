@@ -8,7 +8,10 @@ import { ClientCreateComponent } from './components/clients/client-create/client
 import { ClientUpdateComponent } from './components/clients/client-update/client-update.component';
 import { ClientDeleteComponent } from './components/clients/client-delete/client-delete.component';
 import { ProductsComponent } from './components/products/products.component';
-import { SuppliersComponent } from './components/suppliers/suppliers.component';
+import { SupplierDeleteComponent } from './components/suppliers/supplier-delete/supplier-delete.component';
+import { SupplierConsultComponent } from './components/suppliers/supplier-consult/supplier-consult.component';
+import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
+import { SupplierUpdateComponent } from './components/suppliers/supplier-update/supplier-update.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,8 +21,11 @@ const routes: Routes = [
   { path: 'client-create', component: ClientCreateComponent },
   { path: 'client-update', component: ClientUpdateComponent },
   { path: 'client-delete', component: ClientDeleteComponent },
+  { path: 'supplier-consult', component: SupplierConsultComponent},
+  { path: 'supplier-create', component: SupplierCreateComponent },
+  { path: 'supplier-update', component: SupplierUpdateComponent },
+  { path: 'supplier-delete', component: SupplierDeleteComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'suppliers', component: SuppliersComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
@@ -28,4 +34,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const rountingComponents = [LoginComponent, SalesComponent, HomeComponent, ClientConsultComponent, ClientCreateComponent, ClientUpdateComponent, ClientDeleteComponent, ClientDeleteComponent, ProductsComponent]
+export const rountingComponents = [LoginComponent, SalesComponent, HomeComponent, ClientConsultComponent, ClientCreateComponent, ClientUpdateComponent, 
+  ClientDeleteComponent, ClientDeleteComponent, ProductsComponent,
+SupplierConsultComponent, SupplierCreateComponent, SupplierUpdateComponent, SupplierDeleteComponent]

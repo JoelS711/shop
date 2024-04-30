@@ -6,7 +6,6 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SuppliersComponent } from './components/suppliers/suppliers.component';
 
 @NgModule({
   declarations: [

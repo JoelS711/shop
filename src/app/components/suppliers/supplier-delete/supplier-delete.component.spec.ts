@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuppliersComponent } from './suppliers.component';
+import { SupplierDeleteComponent } from './supplier-delete.component';
 
-describe('SuppliersComponent', () => {
-  let component: SuppliersComponent;
-  let fixture: ComponentFixture<SuppliersComponent>;
+describe('SupplierDeleteComponent', () => {
+  let component: SupplierDeleteComponent;
+  let fixture: ComponentFixture<SupplierDeleteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SuppliersComponent]
+      declarations: [SupplierDeleteComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SuppliersComponent);
+    fixture = TestBed.createComponent(SupplierDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
