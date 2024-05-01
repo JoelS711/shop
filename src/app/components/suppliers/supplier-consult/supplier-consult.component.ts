@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -18,10 +18,11 @@ export class SupplierConsultComponent implements OnInit{
   contenido: any;
   codeget:any;
   searchSupplier() {
-      this.res = this.objetohttp.get(this.urlapi + "/nit/" + this.nitsearch);
-      this.res.subscribe((datos: any[]) => {
-        this.contenido = datos;
-
+      this.res = this.objetohttp.get(this.urlapi + "/nit/" + this.nitsearch, {observe: 'response'});
+      this.res.subscribe((response: HttpResponse<any>) => {
+        this.contenido = response.body;
+        this.codeget = response.status;
+        console.log(response);
       });
     }
 }

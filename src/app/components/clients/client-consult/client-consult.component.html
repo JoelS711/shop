@@ -26,14 +26,16 @@
                 </figure>
             </div>
             <button (click)="buscarCliente()" class="consultClient__btn" type="submit">SEARCH</button>
+            <span *ngIf="codeget==200" style="color: rgb(80, 255, 0)">client successfully consulted</span>
+            <span *ngIf="codeget==204" style="color: red">client doesn't exist</span>
         </div>
         <table class="consultClient__table" *ngIf="contenido">
             <thead>
                 <tr>
                     <th class="consultClient__table--data">Identification</th>
+                    <th class="consultClient__table--data">Name</th>
                     <th class="consultClient__table--data">Address</th>
                     <th class="consultClient__table--data">Email</th>
-                    <th class="consultClient__table--data">Name</th>
                     <th class="consultClient__table--data">Phone</th>
                 </tr>
             </thead>

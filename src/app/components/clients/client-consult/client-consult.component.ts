@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-client-consult',
@@ -18,10 +18,13 @@ export class ClientConsultComponent implements OnInit{
   contenido: any;
   codeget:any;
   buscarCliente() {
-      this.res = this.objetohttp.get(this.urlapi + "/identification/" + this.cedulasearch);
-      this.res.subscribe((datos: any[]) => {
-        this.contenido = datos;
-        console.log(this.contenido)
+      this.res = this.objetohttp.get(this.urlapi + "/identification/" + this.cedulasearch, {observe: 'response'});
+      this.res.subscribe((response: HttpResponse<any>) => {
+        this.contenido = response.body;
+        this.codeget = response.status;
+        console.log(response);
+
+        
 
       });
     }

@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    gap: 1rem;
 }
 
 .consultClient__card{
@@ -41,3 +42,16 @@
     border-radius: 1rem;
 }
 
+
+.consultClient__table{
+    background-color: var(--first-color);
+    border-collapse: collapse;
+}
+
+.consultClient__table--data{
+    text-align: center;
+    padding: .4rem;
+    border: 1px solid #fff;
+}
+
+  

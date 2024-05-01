@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    gap: 1rem;
 }
 
 .consultSupplier__card{
@@ -40,3 +41,15 @@
     width: 100%;
     border-radius: 1rem;
 }
+
+.consultSupplier__table{
+    background-color: var(--first-color);
+    border-collapse: collapse;
+}
+
+.consultSupplier__table--data{
+    text-align: center;
+    padding: .4rem;
+    border: 1px solid #fff;
+}
+

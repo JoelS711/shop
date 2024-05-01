@@ -26,6 +26,8 @@
                 </figure>
             </div>
             <button (click)="searchSupplier()" class="consultSupplier__btn" type="submit">SEARCH</button>
+            <span *ngIf="codeget==200" style="color: rgb(80, 255, 0)">supplier successfully consulted</span>
+            <span *ngIf="codeget==500" style="color: red">error consulting supplier</span>
         </div>
         <table class="consultSupplier__table" *ngIf="contenido">
             <thead>
