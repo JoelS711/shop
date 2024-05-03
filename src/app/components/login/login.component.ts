@@ -29,6 +29,18 @@ export class LoginComponent implements OnInit {
 
   }
 
+  isInputFocused: boolean = false;
+
+    inputFocus() {
+        this.isInputFocused = true;
+    }
+
+    inputBlur() {
+        if (this.user || this.pass === '') {
+            this.isInputFocused = false;
+        }
+    }
+
   ngOnInit(): void {
   }
 

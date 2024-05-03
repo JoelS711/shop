@@ -29,14 +29,34 @@
     padding: .2rem;
 }
 
-.login__input--input {
+.login__labelcontain {
+    position: relative;
+}
+
+.login__labelcontain--label {
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    color: var(--first-color);
+    transition: top 0.4s, font-size 0.3s, color 0.3s;
+    pointer-events: none; /* Para permitir hacer clic a través del label */
+}
+
+.login__labelcontain--input {
     border: none;
     outline: none;
     font-family: inherit;
     font-size: inherit;
-    color: var(--first-color);
-    width: 100%;
+    height: 100%;
     border-radius: 1rem;
+}
+
+
+
+.login__labelcontain--label.active {
+    top: -1.4rem;
+    font-size: .8rem;
+    color: #ffffff;
 }
 
 .login__alert {
