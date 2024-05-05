@@ -186,6 +186,45 @@ hr {
     width: 6rem;
 }
 
+.sales__DataProduct__bottons{
+    display: flex;
+    gap: 2rem;
+}
+
+.sales__dataProduct--addline {
+    border-radius: 10rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .6s ease;
+    background-color: #007a00;
+}
+
+.sales__dataProduct--addline:hover {
+    background-color: #00ff00;
+    color: #000;
+    filter: drop-shadow(0 0 0.4rem rgba(255, 255, 255, 0.8));
+}
+
+.sales__dataProduct--removeline{
+    border-radius: 10rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .6s ease;
+    background-color: red;
+    font-size: 1rem;
+}
+
+.sales__dataProduct--removeline:hover{
+    background-color: #ff4625;
+    filter: drop-shadow(0 0 0.4rem rgba(255, 255, 255, 0.8));
+}
+
 .sales__totals {
     display: flex;
     flex-direction: row-reverse;

@@ -8,6 +8,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SalesComponent implements OnInit {
 
+  ngOnInit(): void {
+    this.clientedata = {
+      "nombrecliente": ""
+    }
+    this.addLine();
+    this.getConsecutivo();
+
+
+  }
+
   constructor(private clientehttp: HttpClient) { }
 
   apiURL: string = "http://localhost:8082/api/";
@@ -25,6 +35,24 @@ export class SalesComponent implements OnInit {
     )
   }
 
+  addProducts: any[] = [];
+  addLine(){
+    if(this.addProducts.length <= 1)
+    this.addProducts.push({
+      cod: '',
+      name: '',
+      quantity: '',
+      price: '0' // Puedes inicializar el precio como desees
+    });
+  }
+
+
+  removeLine(){
+    if (this.addProducts.length > 1) {
+      this.addProducts.pop();
+    }
+  }
+
   cedulacliente!: any;
   clientedata: any;
   getCliente() {
@@ -34,7 +62,51 @@ export class SalesComponent implements OnInit {
     )
   }
 
-  product1: any;
+
+  products: any[] = [];
+  cods: any[] = [];
+  
+  getProduct(numproducto: number) {
+    const cod = this.cods[numproducto - 1];
+    if (cod) {
+      this.clientehttp.get(this.apiURLProduct + "products/code/" + cod)
+        .subscribe((data) => {
+          this.products[numproducto - 1] = data;
+        });
+    }
+  }
+ reload() {
+    window.location.reload()
+  }
+
+  calcPrecioProd(numproducto: number) {
+    switch (numproducto) {
+      case 1:
+        break;
+      }
+  }
+
+  postVenta(){}
+
+  ciudad:any;
+  quantity: any;
+  precioprod:any;
+  totalventa:any;
+  totaliva:any;
+  totalplusiva:any;
+
+
+
+
+
+
+
+  }
+
+
+
+
+  /*product1: any;
   product2: any;
   product3: any;
   codprod1: any;
@@ -64,9 +136,9 @@ export class SalesComponent implements OnInit {
       default:
         break;
     }
-  }
+  }*/
 
-  precioprod1: any;
+ /* precioprod1: any;
   cant1: any;
   precioprod2: any;
   cant2: any;
@@ -174,21 +246,21 @@ export class SalesComponent implements OnInit {
           case 0:
             console.log(this.codigorespuesta);
             /*this.showNotification('top', 'right', 1);*/
-            break;
+         /*   break;
           case 201:
             this.postConsolidado();
             /*this.showNotification('top', 'right', 1);*/
-            break;
+            /*break;
 
           case 226:
             console.log(this.codigorespuesta);
            /* this.showNotification('top', 'right', 2);*/
-            break;
+            /*break;
 
           case 500:
             console.log(this.codigorespuesta);
            /* this.showNotification('top', 'right', 3);*/
-            break;
+            /*break;
 
         }
 
@@ -197,7 +269,7 @@ export class SalesComponent implements OnInit {
 
 
   }
-  postConsolidado() {
+ /* postConsolidado() {
     console.log(this.ciudad)
     console.log(typeof this.ciudad)
     this.clientehttp.post(this.apiURLConsolidated + "consolidated/agregar/"+this.ciudad, 
@@ -208,61 +280,11 @@ export class SalesComponent implements OnInit {
       console.log(response.status)
 
     });
-  }
-
-  /*showNotification(from: any, align: any, type: any) {
-    switch (type) {
-      case 1:
-        this.toastr.success('<b>Dato creado con exito</b>', '', {
-          disableTimeOut: false,
-          closeButton: true,
-          enableHtml: true,
-          toastClass: 'alert alert-success alert-with-icon',
-          positionClass: 'toast-' + from + '-' + align
-        });
-        break;
-      case 2:
-        this.toastr.warning('<b>El dato se encuentra duplicado', '', {
-          disableTimeOut: false,
-          enableHtml: true,
-          closeButton: true,
-          toastClass: 'alert alert-danger alert-with-icon',
-          positionClass: 'toast-' + from + '-' + align
-        });
-        break;
-      case 3:
-        this.toastr.error('<b>Error del servidor', '', {
-          disableTimeOut: false,
-          enableHtml: true,
-          closeButton: true,
-          toastClass: 'alert alert-danger alert-with-icon',
-          positionClass: 'toast-' + from + '-' + align
-        });
-        break;
-    }
   }*/
 
-  reload() {
-    window.location.reload()
-  }
+ 
 
 
-  ngOnInit(): void {
-    this.clientedata = {
-      "nombrecliente": ""
-    }
-    this.product1 = [{
-      "nombreproducto": ""
-    }]
-    this.product2 = [{
-      "nombreproducto": ""
-    }]
-    this.product3 = [{
-      "nombreproducto": ""
-    }]
-    this.getConsecutivo();
 
 
-  }
 
-}
