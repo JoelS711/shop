@@ -45,7 +45,7 @@
                     <div class="sales__dataClient--name">
                         <span class="sales__dataClient--span especial__spans">Name</span>
                         <input type="text" class="sales__dataClient--inputname especial__input" readonly="readonly"
-                            id="nombre_cliente" [(ngModel)]="clientedata.name">
+                            id="nombre_cliente" [ngModel]="clientedata?.name">
 
                     </div>
                 </div>
@@ -75,20 +75,20 @@
                     <div class="sales__dataProduct--name">
                         <span class="sales__dataProduct--namespan especial__spans" id="basic-addon1">Product</span>
                         <input type="text" class="sales__dataProduct--nameinput especial__input"
-                            [(ngModel)]="products[i].name" readonly="readonly">
+                            [(ngModel)]="products[i][0].name" readonly="readonly">
                     </div>
 
                     <div class="sales__dataProduct--quantity">
                         <span class="sales__dataProduct--quantityspan especial__spans" id="basic-addon1">Quantity</span>
-                        <input type="text" class="sales__dataProduct--quantityinput especial__input" [(ngModel)]="quantity"
-                            (input)="calcPrecioProd(1)">
+                        <input type="text" class="sales__dataProduct--quantityinput especial__input" [(ngModel)]="quant[i]"
+                            (input)="calcPrecioProd(1)" value="0">
 
                     </div>
 
                     <div class="sales__dataProduct--price">
                         <span class="sales__dataProduct--pricespan especial__spans" id="basic-addon1">Price</span>
                         <input type="text" class="sales__dataProduct--priceinput especial__input"
-                            [(ngModel)]="precioprod" readonly="readonly" value="0">
+                            [(ngModel)]="products[i][0].saleprice" readonly="readonly" value="0">
 
                     </div>
 
@@ -102,52 +102,55 @@
 
             <hr>
 
-            <div class="sales__totals">
-                <div class="sales__totaltotal">
+           <!-- 
 
-                    <div class="sales__totals--totalsale">
-                        <span class="sales__totals--totalsalespan especial__spans" id="basic-addon1">Total
-                            Sale</span> <input type="text" class="sales__totals--totalsaleinput especial__input"
-                            readonly="readonly" [(ngModel)]="totalventa">
+               <div class="sales__totals">
+                    <div class="sales__totaltotal">
+    
+                        <div class="sales__totals--totalsale">
+                            <span class="sales__totals--totalsalespan especial__spans" id="basic-addon1">Total
+                                Sale</span> <input type="text" class="sales__totals--totalsaleinput especial__input"
+                                readonly="readonly" [(ngModel)]="totalventa">
+                        </div>
+    
+                        <div class="sales__totals--totaliva">
+                            <span class="sales__totals--totalivaspan especial__spans" id="basic-addon1">Total
+                                IVA</span> <input type="text" class="sales__totals--totalivainput especial__input"
+                                readonly="readonly" [(ngModel)]="totaliva">
+    
+                        </div>
+    
+                        <div class="sales__totals--total">
+                            <span class="sales__totals--totalspan especial__spans" id="basic-addon1">TT + IVA</span> <input
+                                type="text" class="sales__totals--totalinput especial__input" readonly="readonly"
+                                [(ngModel)]="totalplusiva">
+    
+                        </div>
+    
                     </div>
-
-                    <div class="sales__totals--totaliva">
-                        <span class="sales__totals--totalivaspan especial__spans" id="basic-addon1">Total
-                            IVA</span> <input type="text" class="sales__totals--totalivainput especial__input"
-                            readonly="readonly" [(ngModel)]="totaliva">
-
+                    <div class="sales__buttons">
+                        <div class="sales__button">
+                            <button type="button" class="sales__button--btnpost" (click)="postVenta()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                    <path fill="#000000"
+                                        d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4z" />
+                                </svg>Register Sale</button>
+                        </div>
+                        <div class="sales__button">
+                            <button type="button" class="sales__button--btnreload" (click)="reload()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+                                    <path fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="32"
+                                        d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z" />
+                                    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10"
+                                        stroke-width="32"
+                                        d="m341.54 197.85l-11.37-13.23a103.37 103.37 0 1 0 22.71 105.84" />
+                                    <path fill="#000000"
+                                        d="M367.32 162a8.44 8.44 0 0 0-6 2.54l-59.54 59.54a8.61 8.61 0 0 0 6.09 14.71h59.54a8.62 8.62 0 0 0 8.62-8.62v-59.56a8.61 8.61 0 0 0-8.68-8.63Z" />
+                                </svg>Reload Page</button>
+                        </div>
                     </div>
-
-                    <div class="sales__totals--total">
-                        <span class="sales__totals--totalspan especial__spans" id="basic-addon1">TT + IVA</span> <input
-                            type="text" class="sales__totals--totalinput especial__input" readonly="readonly"
-                            [(ngModel)]="totalplusiva">
-
-                    </div>
-
                 </div>
-                <div class="sales__buttons">
-                    <div class="sales__button">
-                        <button type="button" class="sales__button--btnpost" (click)="postVenta()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                <path fill="#000000"
-                                    d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4z" />
-                            </svg>Register Sale</button>
-                    </div>
-                    <div class="sales__button">
-                        <button type="button" class="sales__button--btnreload" (click)="reload()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-                                <path fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="32"
-                                    d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z" />
-                                <path fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10"
-                                    stroke-width="32"
-                                    d="m341.54 197.85l-11.37-13.23a103.37 103.37 0 1 0 22.71 105.84" />
-                                <path fill="#000000"
-                                    d="M367.32 162a8.44 8.44 0 0 0-6 2.54l-59.54 59.54a8.61 8.61 0 0 0 6.09 14.71h59.54a8.62 8.62 0 0 0 8.62-8.62v-59.56a8.61 8.61 0 0 0-8.68-8.63Z" />
-                            </svg>Reload Page</button>
-                    </div>
-                </div>
-            </div>
+            --> 
             <div></div>
         </div>
     </div>

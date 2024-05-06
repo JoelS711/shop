@@ -9,12 +9,9 @@ import { HttpClient } from '@angular/common/http';
 export class SalesComponent implements OnInit {
 
   ngOnInit(): void {
-    this.clientedata = {
-      "nombrecliente": ""
-    }
-    this.addLine();
     this.getConsecutivo();
-
+    this.clientedata;
+    /*this.addLine();*/
 
   }
 
@@ -35,21 +32,30 @@ export class SalesComponent implements OnInit {
     )
   }
 
+
+
+  cod:number=0;
+  nameProduct:string="";
+  price:number=0;
+  quantity:number=0;
+  lastIndex: number=0;
   addProducts: any[] = [];
   addLine(){
-    if(this.addProducts.length <= 1)
     this.addProducts.push({
-      cod: '',
-      name: '',
-      quantity: '',
-      price: '0' // Puedes inicializar el precio como desees
+      cod: this.cod,
+      name: this.nameProduct,
+      quantity: this.quantity,
+      price: this.price // Puedes inicializar el precio como desees
     });
   }
 
+  
 
   removeLine(){
     if (this.addProducts.length > 1) {
       this.addProducts.pop();
+      this.products.pop();
+
     }
   }
 
@@ -58,6 +64,7 @@ export class SalesComponent implements OnInit {
   getCliente() {
     this.clientehttp.get(this.apiURLClient + "clients/identification/" + this.cedulacliente).subscribe((data) => {
       this.clientedata = data;
+      console.log(this.clientedata)
     }
     )
   }
@@ -65,13 +72,14 @@ export class SalesComponent implements OnInit {
 
   products: any[] = [];
   cods: any[] = [];
-  
+  quant:any[]=[];
   getProduct(numproducto: number) {
     const cod = this.cods[numproducto - 1];
     if (cod) {
       this.clientehttp.get(this.apiURLProduct + "products/code/" + cod)
         .subscribe((data) => {
           this.products[numproducto - 1] = data;
+          console.log(this.products);
         });
     }
   }
@@ -89,7 +97,6 @@ export class SalesComponent implements OnInit {
   postVenta(){}
 
   ciudad:any;
-  quantity: any;
   precioprod:any;
   totalventa:any;
   totaliva:any;
