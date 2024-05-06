@@ -45,7 +45,7 @@
                     <div class="sales__dataClient--name">
                         <span class="sales__dataClient--span especial__spans">Name</span>
                         <input type="text" class="sales__dataClient--inputname especial__input" readonly="readonly"
-                            id="nombre_cliente" [ngModel]="clientedata?.name">
+                            id="nameClient" [ngModel]="clientedata?.name">
 
                     </div>
                 </div>
@@ -54,12 +54,12 @@
             <div class="sales__dataProduct">
                 <h4 class="sales__dataProduct--title">Product Data</h4>
                 <!-- Producto  -->
-                <div class="sales__dataProduct--content" *ngFor="let dataProduct of addProducts; let i = index">
+                <div class="sales__dataProduct--content" >
                     <div class="sales__dataProduct--cod">
                         <span class="sales__dataProduct--span especial__spans" id="basic-addon1">COD.</span>
-                        <input type="text" class="sales__dataProduct--input especial__input" [(ngModel)]="cods[i]">
+                        <input type="text" class="sales__dataProduct--input especial__input" [(ngModel)]="cods">
                         <div class="sales__dataProduct--button">
-                            <button type="button" class="sales__dataProduct--btn" (click)="getProduct(i + 1)">
+                            <button type="button" class="sales__dataProduct--btn" (click)="getProduct()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
                                     <g fill="none" fill-rule="evenodd">
                                         <path
@@ -75,27 +75,27 @@
                     <div class="sales__dataProduct--name">
                         <span class="sales__dataProduct--namespan especial__spans" id="basic-addon1">Product</span>
                         <input type="text" class="sales__dataProduct--nameinput especial__input"
-                            [(ngModel)]="products[i][0].name" readonly="readonly">
+                            readonly="readonly" [(ngModel)]="productName">
                     </div>
 
                     <div class="sales__dataProduct--quantity">
                         <span class="sales__dataProduct--quantityspan especial__spans" id="basic-addon1">Quantity</span>
-                        <input type="text" class="sales__dataProduct--quantityinput especial__input" [(ngModel)]="quant[i]"
-                            (input)="calcPrecioProd(1)" value="0">
+                        <input type="text" class="sales__dataProduct--quantityinput especial__input" [(ngModel)]="quant"
+                             (input)="calcPrice()">
 
                     </div>
 
                     <div class="sales__dataProduct--price">
                         <span class="sales__dataProduct--pricespan especial__spans" id="basic-addon1">Price</span>
-                        <input type="text" class="sales__dataProduct--priceinput especial__input"
-                            [(ngModel)]="products[i][0].saleprice" readonly="readonly" value="0">
+                        <input type="text" class="sales__dataProduct--priceinput especial__input" [(ngModel)]="price"
+                             readonly="readonly" value="">
 
                     </div>
 
                 </div>
                 <div class="sales__DataProduct__bottons">
                     <button class="sales__dataProduct--addline" type="submit" (click)="addLine()">&#43;</button>
-                    <button class="sales__dataProduct--removeline" type="submit" (click)="removeLine()">&#45;</button>
+                    <button class="sales__dataProduct--removeline" type="submit" >&#45;</button>
                 </div>
                 <!-- Aqui va el boton para agregar mas filas de productos -->
             </div>
