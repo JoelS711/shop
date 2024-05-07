@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+interface Product {
+  code: number;
+  name: string;
+  quantity: number;
+  price: number;
+}
+
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
@@ -48,42 +55,43 @@ export class SalesComponent implements OnInit {
 
 
   productsData: any []= [];
-  productName: string = "";
-  cods: number = 0;
-  quant: number = 0;
-  price:number=0;
-  priceT:number=0;
-  getProduct() {
-    const cod = this.cods;
+  getProduct(index: number) {
+    const cod = this.addProducts[index].code;
     if (cod) {
       this.clientehttp.get(this.apiURLProduct + "products/code/" + cod)
         .subscribe((data: any) => {
-          this.productsData = data;
-          this.productName = this.productsData[0].name
-          console.log(this.quant);
-          console.log(this.productsData);
+          const productData = data[0];
+          this.addProducts[index].name = productData.name;
+          this.addProducts[index].price = productData.saleprice;
         });
     }
 
   }
 
-  calcPrice() {
-    if (this.quant && this.productsData && this.productsData.length > 0) {
-      this.price = this.productsData[0].saleprice * this.quant;
-    } else {
-      this.price = 0; // O cualquier valor predeterminado si quantity no está definido
-    }
+  calcPrice(product: any) {
+    const quantity = product.quant;
+  const price = product.price;
+  if (price>0 && quantity>0) {
+    product.price = quantity * price;
+  } else {
+    product.price = 0;
+  }
   }
 
   addProducts: any []=[];
   addLine(){
     this.addProducts.push({
-      code: this.cods,
-      name: this.productName,
-      quantity: this.quant,
-      price:this.price
+      code: 0,
+      name: "",
+      quant: 0,
+      price:0
     })
-    console.log(this.addProducts)
+  }
+
+  removeLine(){
+    if (this.addProducts.length > 1) {
+      this.addProducts.pop();
+    }
   }
 
   reload() {
