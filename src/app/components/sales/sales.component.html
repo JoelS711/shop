@@ -26,7 +26,7 @@
                     </div>
                     <div class="sales__sataSales--city">
                         <span class="sales__sataSales--spancitys especial__spans">City</span>
-                        <select [(ngModel)]="ciudad" class="sales__sataSales--selectcitys">
+                        <select [(ngModel)]="city" class="sales__sataSales--selectcitys">
                             <option value="1">Bogota</option>
                             <option value="2">Medellin</option>
                             <option value="3">Cali</option>
@@ -102,7 +102,7 @@
 
             <hr>
 
-           <!-- 
+           
 
                <div class="sales__totals">
                     <div class="sales__totaltotal">
@@ -110,20 +110,20 @@
                         <div class="sales__totals--totalsale">
                             <span class="sales__totals--totalsalespan especial__spans" id="basic-addon1">Total
                                 Sale</span> <input type="text" class="sales__totals--totalsaleinput especial__input"
-                                readonly="readonly" [(ngModel)]="totalventa">
+                                readonly="readonly" [value]="totalSale()">
                         </div>
     
                         <div class="sales__totals--totaliva">
                             <span class="sales__totals--totalivaspan especial__spans" id="basic-addon1">Total
                                 IVA</span> <input type="text" class="sales__totals--totalivainput especial__input"
-                                readonly="readonly" [(ngModel)]="totaliva">
+                                readonly="readonly" [value]="totalIva()">
     
                         </div>
     
                         <div class="sales__totals--total">
                             <span class="sales__totals--totalspan especial__spans" id="basic-addon1">TT + IVA</span> <input
                                 type="text" class="sales__totals--totalinput especial__input" readonly="readonly"
-                                [(ngModel)]="totalplusiva">
+                                [value]="totalPlusIva()">
     
                         </div>
     
@@ -150,8 +150,11 @@
                         </div>
                     </div>
                 </div>
-            --> 
-            <div></div>
+             
+            <div>
+                <span *ngIf="codeResponse==201" style="color: rgb(80, 255, 0)">sale successfully created</span>
+                <span *ngIf="codeResponse==500" style="color: red">client exists</span>
+            </div>
         </div>
     </div>
 </section>

@@ -94,24 +94,54 @@ export class SalesComponent implements OnInit {
     }
   }
 
+
+  totalsale: number = 0;
+  totalSale(){
+    let total = 0;
+    for (let producto of this.addProducts) {
+        total += producto.price;
+    }
+    this.totalsale = total
+    return total;
+  }
+
+  totaliva:number=0;
+  totalIva(): number {
+    this.totaliva = this.totalsale * 0.19
+    return Number(this.totaliva.toFixed(2));
+  }
+
+  totalplusiva: number=0;
+  totalPlusIva(){
+    this.totalplusiva = this.totalsale + this.totaliva
+    return this.totalplusiva;
+  }
+
+
   reload() {
     window.location.reload()
   }
 
-  calcPrecioProd(numproducto: number) {
-    switch (numproducto) {
-      case 1:
-        break;
-    }
-  }
+  city:any;
+  codeResponse:any;
+  postVenta() { 
+    this.clientehttp.post(this.apiURL + "sales",
+     {
+      "city": this.city,
+       "identification": this.cedulacliente,
+       "salecode": this.consecutivo,
+       "saledetail": this.addProducts,
+       "ivasale": this.totaliva,
+       "salevalue": this.totalsale,
+       "totalsale": this.totalplusiva
+     }, {
+     observe: 'response'
+   }).subscribe(
+     (response: any) => {
 
-  postVenta() { }
-
-  ciudad: any;
-  precioprod: any;
-  totalventa: any;
-  totaliva: any;
-  totalplusiva: any;
+       this.codeResponse = response.status;
+   }
+  )}
 
 
 
