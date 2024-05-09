@@ -38,12 +38,6 @@ export class SalesComponent implements OnInit {
     )
   }
 
-
-
-
-
-  
-
   cedulacliente!: any;
   clientedata: any;
   getCliente() {
@@ -73,6 +67,13 @@ export class SalesComponent implements OnInit {
   const price = product.price;
   if (price>0 && quantity>0) {
     product.price = quantity * price;
+    this.salesDetail.push({
+      "productquantity": quantity,
+       "codeproduct": product.code,
+       "ivavalue": product.price*0.19,
+       "totalsale": product.price,
+       "salevalue": (product.price*0.19)+product.price
+    })
   } else {
     product.price = 0;
   }
@@ -87,6 +88,8 @@ export class SalesComponent implements OnInit {
       price:0
     })
   }
+
+  salesDetail: any []=[]
 
   removeLine(){
     if (this.addProducts.length > 1) {
@@ -114,7 +117,7 @@ export class SalesComponent implements OnInit {
   totalplusiva: number=0;
   totalPlusIva(){
     this.totalplusiva = this.totalsale + this.totaliva
-    return this.totalplusiva;
+    return Number(this.totalplusiva.toFixed(2));
   }
 
 
@@ -125,12 +128,13 @@ export class SalesComponent implements OnInit {
   city:any;
   codeResponse:any;
   postVenta() { 
+    console.log(this.salesDetail)
     this.clientehttp.post(this.apiURL + "sales",
      {
       "city": this.city,
        "identification": this.cedulacliente,
        "salecode": this.consecutivo,
-       "saledetail": this.addProducts,
+       "saledetail": this.salesDetail,
        "ivasale": this.totaliva,
        "salevalue": this.totalsale,
        "totalsale": this.totalplusiva
