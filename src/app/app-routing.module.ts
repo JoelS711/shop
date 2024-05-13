@@ -12,6 +12,8 @@ import { SupplierDeleteComponent } from './components/suppliers/supplier-delete/
 import { SupplierConsultComponent } from './components/suppliers/supplier-consult/supplier-consult.component';
 import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
 import { SupplierUpdateComponent } from './components/suppliers/supplier-update/supplier-update.component';
+import { ClientListComponent } from './components/reports/client-list/client-list.component';
+import { SalesCityComponent } from './components/reports/sales-city/sales-city.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'supplier-create', component: SupplierCreateComponent },
   { path: 'supplier-update', component: SupplierUpdateComponent },
   { path: 'supplier-delete', component: SupplierDeleteComponent },
+  { path: 'client-list', component: ClientListComponent },
+  { path: 'sales-city', component: SalesCityComponent },
   { path: 'products', component: ProductsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
@@ -36,4 +40,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const rountingComponents = [LoginComponent, SalesComponent, HomeComponent, ClientConsultComponent, ClientCreateComponent, ClientUpdateComponent, 
   ClientDeleteComponent, ClientDeleteComponent, ProductsComponent,
-SupplierConsultComponent, SupplierCreateComponent, SupplierUpdateComponent, SupplierDeleteComponent]
+SupplierConsultComponent, SupplierCreateComponent, SupplierUpdateComponent, SupplierDeleteComponent,ClientListComponent, SalesCityComponent]

@@ -1,0 +1,36 @@
+.clientList{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.clientList__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.clientList__card{
+    background:var(--first-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.clientList__figure{
+    display: flex;
+    justify-content: center;
+    gap: .4rem;
+}
+
+.clientList__buttons{
+    display: flex;
+    gap: 1rem;
+}
