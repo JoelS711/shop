@@ -26,10 +26,11 @@
                     </div>
                     <div class="sales__sataSales--city">
                         <span class="sales__sataSales--spancitys especial__spans">City</span>
-                        <select [(ngModel)]="city" class="sales__sataSales--selectcitys">
-                            <option value="1">Bogota</option>
-                            <option value="2">Medellin</option>
-                            <option value="3">Cali</option>
+                        <select [(ngModel)]="city" class="sales__sataSales--selectcitys" required>
+                            <option value="" disabled selected>Select a city</option>
+                            <option value="Bogota">Bogota</option>
+                            <option value="Medellin">Medellin</option>
+                            <option value="Cali">Cali</option>
                         </select>
                     </div>
                 </div>
