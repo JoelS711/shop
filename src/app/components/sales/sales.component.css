@@ -31,7 +31,7 @@
 /*------------------------------------------*/
 .sales {
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 
 .sales__container {
