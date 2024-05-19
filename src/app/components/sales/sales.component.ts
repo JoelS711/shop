@@ -27,6 +27,7 @@ export class SalesComponent implements OnInit {
   apiURLClient: string = "http://localhost:8081/api/";
   apiURLProduct: string = "http://localhost:8080/api/";
   apiURLConsolidated: string = "http://localhost:8085/api/";
+  apiURLReport: string = "http://localhost:8086/api/";
 
   consecutivo !: any;
 
@@ -125,13 +126,12 @@ export class SalesComponent implements OnInit {
     window.location.reload()
   }
 
-  city:any;
+  
   codeResponse:any;
   postVenta() { 
     console.log(this.salesDetail)
     this.clientehttp.post(this.apiURL + "sales",
      {
-      "city": this.city,
        "identification": this.cedulacliente,
        "salecode": this.consecutivo,
        "saledetail": this.salesDetail,
@@ -144,16 +144,49 @@ export class SalesComponent implements OnInit {
      (response: any) => {
 
        this.codeResponse = response.status;
-   }
-  )}
+   })
+   this.consolidated();
+  }
 
 
+  city:any;
+  respConsolidate:any;
+  consolidated(){
+    this.clientehttp.post(this.apiURLConsolidated, {
+      "city": this.city,
+      "iva": this.totaliva,
+      "totalsale": this.totalsale,
+      "total": this.totalplusiva
+    }, {
+      observe: 'response'
+    }).subscribe(
+      response => {
+        this.respConsolidate = response.status;
+            }
+    )
+  }
 
-
+  respReport:any;
+  report(){
+    this.clientehttp.post(this.apiURLReport, {
+      "city": this.city,
+      "identification":this.cedulacliente,
+      "name": this.clientedata.name,
+      "total": this.totalplusiva
+    }, {
+      observe: 'response'
+    }).subscribe(
+      response => {
+        this.respReport = response.status;
+            }
+    )
+  }
 
 
 
 }
+
+
 
 
 /* postConsolidado() {
