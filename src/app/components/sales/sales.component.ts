@@ -66,7 +66,7 @@ export class SalesComponent implements OnInit {
   calcPrice(product: any) {
     const quantity = product.quant;
   const price = product.price;
-  if (price>0 && quantity>0) {
+  if (price>0 && quantity>0 && quantity != null) {
     product.price = quantity * price;
     this.salesDetail.push({
       "productquantity": quantity,
@@ -146,6 +146,7 @@ export class SalesComponent implements OnInit {
        this.codeResponse = response.status;
    })
    this.consolidated();
+   this.report();
   }
 
 
