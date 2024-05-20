@@ -4,7 +4,7 @@
         <div class="sales__card">
             
 
-
+            <!--<form (ngSubmit)="postVenta()" class="sales__form">-->
             
             <div class="sales__title">
                 <h3 class="sales__title--title">Register Sale</h3>
@@ -20,25 +20,26 @@
                             <circle cx="8.5" cy="13" r=".5" />
                         </g>
                     </svg>
-                    <h4 class="sales__sataSales--title">Sale Data</h4>
+                    <h4 class="sales__dataSales--title">Sale Data</h4>
                 </figure>
                 
                 <div class="sales__dataSales--content">
-                    <div class="sales__sataSales--count">
-                        <span class="sales__sataSales--span especial__spans">IN</span>
-                        <input type="text" class="sales__sataSales--input especial__input" readonly="readonly" name="invoiceNumber"
+                    <div class="sales__dataSales--count">
+                        <span class="sales__dataSales--span especial__spans">IN</span>
+                        <input type="text" class="sales__dataSales--input especial__input" readonly="readonly" name="invoiceNumber"
                             [(ngModel)]="consecutivo">
                     </div>
-                    <div class="sales__sataSales--city">
-                        <span class="sales__sataSales--spancitys especial__spans">City</span>
-                        <select [(ngModel)]="city" class="sales__sataSales--selectcitys" name="city" required>
+                    <div class="sales__dataSales--city">
+                        <span class="sales__dataSales--spancitys especial__spans">City</span>
+                        <select [(ngModel)]="city" class="sales__dataSales--selectcitys" name="cityName" required>
                             <option value="" disabled selected>Select a city</option>
                             <option value="Bogota">Bogota</option>
                             <option value="Medellin">Medellin</option>
                             <option value="Cali">Cali</option>
                         </select>
+                        <span *ngIf="submitted && !city" class="alert">*choose a city</span>
                     </div>
-                    <span *ngIf="codeResponse==500" style="color: red">choose a city</span>
+                    
                 </div>
             </div>
             <div class="sales__dataClient">
@@ -47,7 +48,8 @@
                     <div class="sales__dataClient--identity">
                         <span class="sales__dataClient--span especial__spans">ID</span>
                         <input type="text" class="sales__dataClient--input especial__input" [(ngModel)]="cedulacliente"
-                            (input)="getCliente()" name="idClient" required>
+                            (input)="getCliente()" name="cedulacliente" required>
+                        <span *ngIf="submitted && !cedulacliente" class="alert">*invalid number</span>    
                     </div>
                     <div class="sales__dataClient--name">
                         <span class="sales__dataClient--span especial__spans">Name</span>
@@ -65,6 +67,7 @@
                     <div class="sales__dataProduct--cod">
                         <span class="sales__dataProduct--span especial__spans" id="basic-addon1">COD.</span>
                         <input type="text" class="sales__dataProduct--input especial__input" [(ngModel)]="prod.code" name="code" required>
+                        <span *ngIf="submitted && !prod.code" class="alert">*invalid number</span>
                         <div class="sales__dataProduct--button">
                             <button type="button" class="sales__dataProduct--btn" (click)="getProduct(i)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
@@ -88,7 +91,8 @@
                     <div class="sales__dataProduct--quantity">
                         <span class="sales__dataProduct--quantityspan especial__spans" id="basic-addon1">Quantity</span>
                         <input type="text" class="sales__dataProduct--quantityinput especial__input"
-                            [(ngModel)]="prod.quant" (input)="calcPrice(prod)" name="quantity" required>
+                            [(ngModel)]="prod.quant" (input)="calcPrice(prod)" name="quant" required>
+                            <span *ngIf="submitted && !prod.quant" class="alert">*invalid number</span>
 
                     </div>
 
@@ -101,8 +105,8 @@
 
                 </div>
                 <div class="sales__DataProduct__bottons">
-                    <button class="sales__dataProduct--addline" type="submit" (click)="addLine()">&#43;</button>
-                    <button class="sales__dataProduct--removeline" type="submit" (click)="removeLine()">&#45;</button>
+                    <button class="sales__dataProduct--addline" type="button" (click)="addLine()">&#43;</button>
+                    <button class="sales__dataProduct--removeline" type="button" (click)="removeLine()">&#45;</button>
                 </div>
                 <!-- Aqui va el boton para agregar mas filas de productos -->
             </div>
@@ -162,6 +166,8 @@
                 <span *ngIf="codeResponse==201" style="color: rgb(80, 255, 0)">sale successfully created</span>
                 <span *ngIf="codeResponse==500" style="color: red">sale no created</span>
             </div>
+        <!--</form>-->
         </div>
+        
     </div>
 </section>

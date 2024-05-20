@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
 
 interface Product {
   code: number;
@@ -127,29 +126,42 @@ export class SalesComponent implements OnInit {
     window.location.reload()
   }
 
-  
+
+  validateForm(): boolean {
+    this.submitted = true;
+    if (!this.city || !this.cedulacliente || this.addProducts.some(prod => !prod.code || !prod.quant)) {
+      return false;
+    }
+    return true;
+  }
+
+  submitted:boolean=false;
   codeResponse:any;
   postVenta() { 
-      console.log(this.salesDetail)
-      this.clientehttp.post(this.apiURL + "sales",
-       {
-        "city": this.city,
-         "identification": this.cedulacliente,
-         "name": this.clientedata.name,
-         "salecode": this.consecutivo,
-         "saledetail": this.salesDetail,
-         "ivasale": this.totaliva,
-         "salevalue": this.totalsale,
-         "totalsale": this.totalplusiva
-       }, {
-       observe: 'response'
-     }).subscribe(
-       (response: any) => {
-  
-         this.codeResponse = response.status;
-     })
-     this.consolidated();
-     this.report();
+      if(this.validateForm()){
+        this.clientehttp.post(this.apiURL + "sales",
+        {
+         "city": this.city,
+          "identification": this.cedulacliente,
+          "name": this.clientedata.name,
+          "salecode": this.consecutivo,
+          "saledetail": this.salesDetail,
+          "ivasale": this.totaliva,
+          "salevalue": this.totalsale,
+          "totalsale": this.totalplusiva
+        }, {
+        observe: 'response'
+      }).subscribe(
+        (response: any) => {
+   
+          this.codeResponse = response.status;
+      })
+      this.consolidated();
+      this.report();
+     
+      
+      }
+     
     
     
   }
