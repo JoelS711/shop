@@ -22,12 +22,12 @@ export class SupplierCreateComponent implements OnInit {
   telefonoinsert!: string;
   codepost!: number;
 
-  insertarCliente() {
+  insertSupplier() {
     this.objetohttp.post(this.urlapi, {
       "nit": this.nitinsert,
+      "namesupplier": this.nombreinsert,
       "address": this.direccioninsert,
       "email": this.emailinsert,
-      "namesupplier": this.nombreinsert,
       "phone": this.telefonoinsert
     }, {
       observe: 'response'
@@ -35,9 +35,9 @@ export class SupplierCreateComponent implements OnInit {
       response => {
         this.codepost = response.status;
         this.nitinsert = "";
+        this.nombreinsert = "";
         this.direccioninsert = "";
         this.emailinsert = "";
-        this.nombreinsert = "";
         this.telefonoinsert = "";
       }
     )
