@@ -2,6 +2,10 @@
     <app-navbar></app-navbar>
     <div class="sales__container">
         <div class="sales__card">
+            
+
+
+            
             <div class="sales__title">
                 <h3 class="sales__title--title">Register Sale</h3>
                 <span class="sales__title--span">You can record a sale made to a specific customer</span>
@@ -18,21 +22,23 @@
                     </svg>
                     <h4 class="sales__sataSales--title">Sale Data</h4>
                 </figure>
+                
                 <div class="sales__dataSales--content">
                     <div class="sales__sataSales--count">
                         <span class="sales__sataSales--span especial__spans">IN</span>
-                        <input type="text" class="sales__sataSales--input especial__input" readonly="readonly"
+                        <input type="text" class="sales__sataSales--input especial__input" readonly="readonly" name="invoiceNumber"
                             [(ngModel)]="consecutivo">
                     </div>
                     <div class="sales__sataSales--city">
                         <span class="sales__sataSales--spancitys especial__spans">City</span>
-                        <select [(ngModel)]="city" class="sales__sataSales--selectcitys" required>
+                        <select [(ngModel)]="city" class="sales__sataSales--selectcitys" name="city" required>
                             <option value="" disabled selected>Select a city</option>
                             <option value="Bogota">Bogota</option>
                             <option value="Medellin">Medellin</option>
                             <option value="Cali">Cali</option>
                         </select>
                     </div>
+                    <span *ngIf="codeResponse==500" style="color: red">choose a city</span>
                 </div>
             </div>
             <div class="sales__dataClient">
@@ -41,12 +47,12 @@
                     <div class="sales__dataClient--identity">
                         <span class="sales__dataClient--span especial__spans">ID</span>
                         <input type="text" class="sales__dataClient--input especial__input" [(ngModel)]="cedulacliente"
-                            (input)="getCliente()">
+                            (input)="getCliente()" name="idClient" required>
                     </div>
                     <div class="sales__dataClient--name">
                         <span class="sales__dataClient--span especial__spans">Name</span>
                         <input type="text" class="sales__dataClient--inputname especial__input" readonly="readonly"
-                            id="nameClient" [ngModel]="clientedata?.name">
+                            id="nameClient" [ngModel]="clientedata?.name" name="nameClient" required>
 
                     </div>
                 </div>
@@ -58,7 +64,7 @@
                 <div class="sales__dataProduct--content" *ngFor="let prod of addProducts; let i = index">
                     <div class="sales__dataProduct--cod">
                         <span class="sales__dataProduct--span especial__spans" id="basic-addon1">COD.</span>
-                        <input type="text" class="sales__dataProduct--input especial__input" [(ngModel)]="prod.code">
+                        <input type="text" class="sales__dataProduct--input especial__input" [(ngModel)]="prod.code" name="code" required>
                         <div class="sales__dataProduct--button">
                             <button type="button" class="sales__dataProduct--btn" (click)="getProduct(i)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
@@ -75,21 +81,21 @@
 
                     <div class="sales__dataProduct--name">
                         <span class="sales__dataProduct--namespan especial__spans" id="basic-addon1">Product</span>
-                        <input type="text" class="sales__dataProduct--nameinput especial__input"
-                            readonly="readonly" [(ngModel)]="prod.name">
+                        <input type="text" class="sales__dataProduct--nameinput especial__input" readonly="readonly"
+                            [(ngModel)]="prod.name">
                     </div>
 
                     <div class="sales__dataProduct--quantity">
                         <span class="sales__dataProduct--quantityspan especial__spans" id="basic-addon1">Quantity</span>
-                        <input type="text" class="sales__dataProduct--quantityinput especial__input" [(ngModel)]="prod.quant"
-                             (input)="calcPrice(prod)">
+                        <input type="text" class="sales__dataProduct--quantityinput especial__input"
+                            [(ngModel)]="prod.quant" (input)="calcPrice(prod)" name="quantity" required>
 
                     </div>
 
                     <div class="sales__dataProduct--price">
                         <span class="sales__dataProduct--pricespan especial__spans" id="basic-addon1">Price</span>
-                        <input type="text" class="sales__dataProduct--priceinput especial__input" [(ngModel)]="prod.price"
-                             readonly="readonly" value="">
+                        <input type="text" class="sales__dataProduct--priceinput especial__input"
+                            [(ngModel)]="prod.price" readonly="readonly" value="">
 
                     </div>
 
@@ -103,58 +109,58 @@
 
             <hr>
 
-           
 
-               <div class="sales__totals">
-                    <div class="sales__totaltotal">
-    
-                        <div class="sales__totals--totalsale">
-                            <span class="sales__totals--totalsalespan especial__spans" id="basic-addon1">Total
-                                Sale</span> <input type="text" class="sales__totals--totalsaleinput especial__input"
-                                readonly="readonly" [value]="totalSale()">
-                        </div>
-    
-                        <div class="sales__totals--totaliva">
-                            <span class="sales__totals--totalivaspan especial__spans" id="basic-addon1">Total
-                                IVA</span> <input type="text" class="sales__totals--totalivainput especial__input"
-                                readonly="readonly" [value]="totalIva()">
-    
-                        </div>
-    
-                        <div class="sales__totals--total">
-                            <span class="sales__totals--totalspan especial__spans" id="basic-addon1">TT + IVA</span> <input
-                                type="text" class="sales__totals--totalinput especial__input" readonly="readonly"
-                                [value]="totalPlusIva()">
-    
-                        </div>
-    
+
+            <div class="sales__totals">
+                <div class="sales__totaltotal">
+
+                    <div class="sales__totals--totalsale">
+                        <span class="sales__totals--totalsalespan especial__spans" id="basic-addon1">Total
+                            Sale</span> <input type="text" class="sales__totals--totalsaleinput especial__input"
+                            readonly="readonly" [value]="totalSale()">
                     </div>
-                    <div class="sales__buttons">
-                        <div class="sales__button">
-                            <button type="button" class="sales__button--btnpost" (click)="postVenta()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                    <path fill="#000000"
-                                        d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4z" />
-                                </svg>Register Sale</button>
-                        </div>
-                        <div class="sales__button">
-                            <button type="button" class="sales__button--btnreload" (click)="reload()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-                                    <path fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="32"
-                                        d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z" />
-                                    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10"
-                                        stroke-width="32"
-                                        d="m341.54 197.85l-11.37-13.23a103.37 103.37 0 1 0 22.71 105.84" />
-                                    <path fill="#000000"
-                                        d="M367.32 162a8.44 8.44 0 0 0-6 2.54l-59.54 59.54a8.61 8.61 0 0 0 6.09 14.71h59.54a8.62 8.62 0 0 0 8.62-8.62v-59.56a8.61 8.61 0 0 0-8.68-8.63Z" />
-                                </svg>Reload Page</button>
-                        </div>
+
+                    <div class="sales__totals--totaliva">
+                        <span class="sales__totals--totalivaspan especial__spans" id="basic-addon1">Total
+                            IVA</span> <input type="text" class="sales__totals--totalivainput especial__input"
+                            readonly="readonly" [value]="totalIva()">
+
+                    </div>
+
+                    <div class="sales__totals--total">
+                        <span class="sales__totals--totalspan especial__spans" id="basic-addon1">TT + IVA</span> <input
+                            type="text" class="sales__totals--totalinput especial__input" readonly="readonly"
+                            [value]="totalPlusIva()">
+
+                    </div>
+
+                </div>
+                <div class="sales__buttons">
+                    <div class="sales__button">
+                        <button type="button" class="sales__button--btnpost" (click)="postVenta()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path fill="#000000"
+                                    d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4z" />
+                            </svg>Register Sale</button>
+                    </div>
+                    <div class="sales__button">
+                        <button type="button" class="sales__button--btnreload" (click)="reload()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+                                <path fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="32"
+                                    d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z" />
+                                <path fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10"
+                                    stroke-width="32"
+                                    d="m341.54 197.85l-11.37-13.23a103.37 103.37 0 1 0 22.71 105.84" />
+                                <path fill="#000000"
+                                    d="M367.32 162a8.44 8.44 0 0 0-6 2.54l-59.54 59.54a8.61 8.61 0 0 0 6.09 14.71h59.54a8.62 8.62 0 0 0 8.62-8.62v-59.56a8.61 8.61 0 0 0-8.68-8.63Z" />
+                            </svg>Reload Page</button>
                     </div>
                 </div>
-             
+            </div>
+
             <div>
                 <span *ngIf="codeResponse==201" style="color: rgb(80, 255, 0)">sale successfully created</span>
-                <span *ngIf="codeResponse==500" style="color: red">client exists</span>
+                <span *ngIf="codeResponse==500" style="color: red">sale no created</span>
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 interface Product {
   code: number;
@@ -129,31 +130,37 @@ export class SalesComponent implements OnInit {
   
   codeResponse:any;
   postVenta() { 
-    console.log(this.salesDetail)
-    this.clientehttp.post(this.apiURL + "sales",
-     {
-       "identification": this.cedulacliente,
-       "salecode": this.consecutivo,
-       "saledetail": this.salesDetail,
-       "ivasale": this.totaliva,
-       "salevalue": this.totalsale,
-       "totalsale": this.totalplusiva
-     }, {
-     observe: 'response'
-   }).subscribe(
-     (response: any) => {
-
-       this.codeResponse = response.status;
-   })
-   this.consolidated();
-   this.report();
+      console.log(this.salesDetail)
+      this.clientehttp.post(this.apiURL + "sales",
+       {
+        "city": this.city,
+         "identification": this.cedulacliente,
+         "name": this.clientedata.name,
+         "salecode": this.consecutivo,
+         "saledetail": this.salesDetail,
+         "ivasale": this.totaliva,
+         "salevalue": this.totalsale,
+         "totalsale": this.totalplusiva
+       }, {
+       observe: 'response'
+     }).subscribe(
+       (response: any) => {
+  
+         this.codeResponse = response.status;
+     })
+     this.consolidated();
+     this.report();
+    
+    
   }
+
+ 
 
 
   city:any;
   respConsolidate:any;
   consolidated(){
-    this.clientehttp.post(this.apiURLConsolidated, {
+    this.clientehttp.post(this.apiURLConsolidated + "consolidated", {
       "city": this.city,
       "iva": this.totaliva,
       "totalsale": this.totalsale,
@@ -169,7 +176,7 @@ export class SalesComponent implements OnInit {
 
   respReport:any;
   report(){
-    this.clientehttp.post(this.apiURLReport, {
+    this.clientehttp.post(this.apiURLReport + "report", {
       "city": this.city,
       "identification":this.cedulacliente,
       "name": this.clientedata.name,
