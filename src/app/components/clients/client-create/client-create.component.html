@@ -17,11 +17,9 @@
                         </svg>
                         <input type="text" placeholder="Identification" [(ngModel)]="cedulainsert">
                         <span class="createClient__spans">
-                            <span *ngIf="cedulainsert!=undefined && cedulainsert!=''"
-                                >&#9989;</span>
+                            <span *ngIf="cedulainsert">&#9989;</span>
 
-                            <span *ngIf="cedulainsert==undefined || cedulainsert==''"
-                                >&#10060;</span>
+                            <span *ngIf="!cedulainsert">&#10060;</span>
                         </span>
                     </figure>
 
@@ -33,10 +31,10 @@
                         <input type="text" placeholder="Address" [(ngModel)]="direccioninsert">
                         <span class="createClient__spans">
 
-                            <span *ngIf="direccioninsert!=undefined && direccioninsert!=''"
+                            <span *ngIf="direccioninsert"
                                >&#9989;</span>
 
-                            <span *ngIf="direccioninsert==undefined || direccioninsert==''"
+                            <span *ngIf="!direccioninsert"
                                 >&#10060;</span>
                         </span>
                     </figure>
@@ -48,10 +46,10 @@
                         <input type="text" class="form-control" placeholder="E-mail" [(ngModel)]="emailinsert">
                         <span class="createClient__spans">
 
-                            <span *ngIf="emailinsert!=undefined && emailinsert!=''"
+                            <span *ngIf="emailinsert"
                                >&#9989;</span>
 
-                            <span *ngIf="emailinsert==undefined || emailinsert==''"
+                            <span *ngIf="!emailinsert"
                                 >&#10060;</span>
 
                         </span>
@@ -64,10 +62,10 @@
                         <input type="text" class="form-control" placeholder="Name" [(ngModel)]="nombreinsert">
                         <span class="createClient__spans">
 
-                            <span *ngIf="nombreinsert!=undefined && nombreinsert!=''"
+                            <span *ngIf="nombreinsert"
                                 >&#9989;</span>
 
-                            <span *ngIf="nombreinsert==undefined || nombreinsert==''"
+                            <span *ngIf="!nombreinsert"
                                 >&#10060;</span>
 
                         </span>
@@ -80,10 +78,10 @@
                         <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="telefonoinsert">
                         <span class="createClient__spans">
 
-                            <span *ngIf="nombreinsert!=undefined && nombreinsert!=''"
+                            <span *ngIf="telefonoinsert"
                                 >&#9989;</span>
 
-                            <span *ngIf="nombreinsert==undefined || nombreinsert==''"
+                            <span *ngIf="!telefonoinsert"
                                 >&#10060;</span>
 
                         </span>
@@ -92,11 +90,12 @@
             </div>
 
             <div class="createClient__button">
-                <button (click)="insertarCliente()" type="submit" name="btnActualizar">CREATE</button>
+                <button (click)="insertClient()" type="submit" name="btnActualizar">CREATE</button>
                 <br />
                 <span *ngIf="codepost==201" style="color: rgb(80, 255, 0)">create successfully</span>
                 <span *ngIf="codepost==226" style="color: rgb(251, 255, 0)">client exists</span>
-                <span *ngIf="codepost==500" style="color: red">client exists</span>
+                <span *ngIf="codepost==500" style="color: red">error creating client</span>
+                <span *ngIf="codepost==400" style="color: red">all fields are required</span>
             </div>
         </div>
     </div>

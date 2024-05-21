@@ -22,25 +22,31 @@ export class ClientCreateComponent implements OnInit {
   telefonoinsert!: string;
   codepost!: number;
 
-  insertarCliente() {
-    this.objetohttp.post(this.urlapi, {
-      "identification": this.cedulainsert,
-      "address": this.direccioninsert,
-      "email": this.emailinsert,
-      "name": this.nombreinsert,
-      "phone": this.telefonoinsert
-    }, {
-      observe: 'response'
-    }).subscribe(
-      response => {
-        this.codepost = response.status;
-        this.cedulainsert = "";
-        this.direccioninsert = "";
-        this.emailinsert = "";
-        this.nombreinsert = "";
-        this.telefonoinsert = "";
-      }
-    )
+  insertClient() {
+    if(!this.cedulainsert || !this.direccioninsert || !this.emailinsert || !this.nombreinsert || !this.telefonoinsert){
+      this.codepost = 400;
+    }else{
+      
+      this.objetohttp.post(this.urlapi, {
+        "identification": this.cedulainsert,
+        "address": this.direccioninsert,
+        "email": this.emailinsert,
+        "name": this.nombreinsert,
+        "phone": this.telefonoinsert
+      }, {
+        observe: 'response'
+      }).subscribe(
+        response => {
+          this.codepost = response.status;
+          this.cedulainsert = "";
+          this.direccioninsert = "";
+          this.emailinsert = "";
+          this.nombreinsert = "";
+          this.telefonoinsert = "";
+        }
+      )
+
+    }
 
   }
 
