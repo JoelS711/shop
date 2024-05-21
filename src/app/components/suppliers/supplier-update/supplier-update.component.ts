@@ -23,26 +23,31 @@ export class SupplierUpdateComponent implements OnInit {
   telefonoupdate!: string;
   codeput!: number;
   updateSupplier() {
-    this.objetohttp.put(this.urlapi + "/nit/" + this.nitupdate,
-      {
-        "nit": this.nitupdate,
-        "address": this.direccionupdate,
-        "email": this.emailupdate,
-        "namesupplier": this.nombreupdate,
-        "phone": this.telefonoupdate
-      }, {
-      observe: 'response'
-    }).subscribe(
-      (response: any) => {
+    if(!this.nitupdate || this.direccionupdate || this.emailupdate || this.nombreupdate || this.telefonoupdate){
+      this.codeput = 400;
+    }else{
+      this.objetohttp.put(this.urlapi + "/nit/" + this.nitupdate,
+        {
+          "nit": this.nitupdate,
+          "address": this.direccionupdate,
+          "email": this.emailupdate,
+          "namesupplier": this.nombreupdate,
+          "phone": this.telefonoupdate
+        }, {
+        observe: 'response'
+      }).subscribe(
+        (response: any) => {
+  
+          this.codeput = response.status;
+          this.nitupdate = "";
+          this.direccionupdate = "";
+          this.emailupdate = "";
+          this.nombreupdate = "";
+          this.telefonoupdate = "";
+        }
+      );
+    }
 
-        this.codeput = response.status;
-        this.nitupdate = "";
-        this.direccionupdate = "";
-        this.emailupdate = "";
-        this.nombreupdate = "";
-        this.telefonoupdate = "";
-      }
-    );
-  }
+    }
 
 }
