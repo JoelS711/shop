@@ -22,26 +22,31 @@ export class ClientUpdateComponent implements OnInit {
   nombreupdate!: string;
   telefonoupdate!: string;
   codeput!: number;
-  actualizarCliente() {
-    this.objetohttp.put(this.urlapi + "/identification/" + this.cedulaupdate,
-      {
-        "identification": this.cedulaupdate,
-        "address": this.direccionupdate,
-        "email": this.emailupdate,
-        "name": this.nombreupdate,
-        "phone": this.telefonoupdate
-      }, {
-      observe: 'response'
-    }).subscribe(
-      (response: any) => {
+  updateClient() {
+    if(!this.cedulaupdate || !this.direccionupdate || this.emailupdate || this.nombreupdate || this.telefonoupdate){
+this.codeput=400;
+    }else{
+      this.objetohttp.put(this.urlapi + "/identification/" + this.cedulaupdate,
+        {
+          "identification": this.cedulaupdate,
+          "address": this.direccionupdate,
+          "email": this.emailupdate,
+          "name": this.nombreupdate,
+          "phone": this.telefonoupdate
+        }, {
+        observe: 'response'
+      }).subscribe(
+        (response: any) => {
+  
+          this.codeput = response.status;
+          this.cedulaupdate = "";
+          this.direccionupdate = "";
+          this.emailupdate = "";
+          this.nombreupdate = "";
+          this.telefonoupdate = "";
+        }
+      );
+    }
 
-        this.codeput = response.status;
-        this.cedulaupdate = "";
-        this.direccionupdate = "";
-        this.emailupdate = "";
-        this.nombreupdate = "";
-        this.telefonoupdate = "";
-      }
-    );
-  }
+    }
 }

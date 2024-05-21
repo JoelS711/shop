@@ -106,9 +106,10 @@
             </div>
 
             <div class="updateClient__button">
-                <button (click)="actualizarCliente()" type="submit" name="btnActualizar">UPDATE</button>
+                <button (click)="updateClient()" type="submit" name="btnActualizar">UPDATE</button>
                 <span *ngIf="codeput==200" style="color: rgb(81, 255, 0)">update successfully</span>
                 <span *ngIf="codeput==204" style="color: red">client doesn't exists</span>
+                <span *ngIf="codeput==400" style="color: red">all fields are required</span>
             </div>
         </div>
     </div>
