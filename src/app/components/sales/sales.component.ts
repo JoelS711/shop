@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface Product {
-  code: number;
-  name: string;
-  quantity: number;
-  price: number;
-}
 
 @Component({
   selector: 'app-sales',
@@ -63,10 +57,58 @@ export class SalesComponent implements OnInit {
 
   }
 
-  calcPrice(product: any) {
-    const quantity = product.quant;
+  calcPrice(index: number) {
+const products = this.addProducts[index];
+const quant = products.quant;
+const price = products.price;
+console.log("Cantidad antes del if "+quant);
+console.log("Precio antes del if "+price);
+if (!isNaN(quant) && quant > 0) {
+  
+console.log("Cantidad antes del if "+quant);
+console.log("Precio antes del if "+price);
+products.price =  quant * price;
+this.salesDetail.push({
+  "productquantity": quant,
+  "codeproduct": products.code,
+  "ivavalue": products.price * 0.19,
+  "totalsale": products.price,
+  "salevalue": (products.price * 0.19) + products.price
+});
+}else{
+  
+console.log("Cantidad antes del if "+quant);
+console.log("Precio antes del if "+price);
+  products.price =0;
+}
+
+
+  /*const quantity = product.quant;
   const price = product.price;
-  if (price>0 && quantity>0 && quantity != null) {
+  const p = product.price;
+console.log("Cantidad antes del if "+quantity);
+console.log("Precio antes del if "+price);
+  if (!isNaN(quantity) && price !== null && price !== undefined && price > 0) { // Verificar si la cantidad es un número válido y el precio es mayor que cero
+    product.price = quantity * price;
+    console.log("Despues del if "+quantity);
+console.log("Despues del if "+price);
+console.log("Despues del if "+product.price);
+    this.salesDetail.push({
+      "productquantity": quantity,
+      "codeproduct": product.code,
+      "ivavalue": product.price * 0.19,
+      "totalsale": product.price,
+      "salevalue": (product.price * 0.19) + product.price
+    });
+  } else {
+    console.log("else "+quantity);
+console.log("else "+price);
+console.log("else "+product.price);
+  }
+    /*const quantity = parseFloat(product.quant) || 0;
+  const price = product.price;
+
+  if (price>0 && quantity>0) {
     product.price = quantity * price;
     this.salesDetail.push({
       "productquantity": quantity,
@@ -77,7 +119,7 @@ export class SalesComponent implements OnInit {
     })
   } else {
     product.price = 0;
-  }
+  }*/
   }
 
   addProducts: any []=[];
@@ -205,22 +247,6 @@ export class SalesComponent implements OnInit {
 
 
 }
-
-
-
-
-/* postConsolidado() {
-console.log(this.ciudad)
-console.log(typeof this.ciudad)
-this.clientehttp.post(this.apiURLConsolidated + "consolidated/agregar/"+this.ciudad, 
-{},
-{observe:"response"}
-).subscribe((response: any) => {
-
-console.log(response.status)
-
-});
-}*/
 
 
 

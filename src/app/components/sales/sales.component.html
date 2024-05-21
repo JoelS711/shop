@@ -90,16 +90,16 @@
 
                     <div class="sales__dataProduct--quantity">
                         <span class="sales__dataProduct--quantityspan especial__spans" id="basic-addon1">Quantity</span>
-                        <input type="text" class="sales__dataProduct--quantityinput especial__input"
-                            [(ngModel)]="prod.quant" (input)="calcPrice(prod)" name="quant" required>
-                            <span *ngIf="submitted && !prod.quant" class="alert">*invalid number</span>
+                        <input type="number" class="sales__dataProduct--quantityinput especial__input"
+                            [(ngModel)]="prod.quant" (input)="calcPrice(i)" name="quant" required>
+                            <span *ngIf="submitted && (!prod.quant || prod.quant<=0)" class="alert">*invalid number</span>
 
                     </div>
 
                     <div class="sales__dataProduct--price">
                         <span class="sales__dataProduct--pricespan especial__spans" id="basic-addon1">Price</span>
                         <input type="text" class="sales__dataProduct--priceinput especial__input"
-                            [(ngModel)]="prod.price" readonly="readonly" value="">
+                            [(ngModel)]="prod.price"  readonly="readonly" value="">
 
                     </div>
 
