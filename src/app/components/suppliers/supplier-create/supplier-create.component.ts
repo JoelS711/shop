@@ -23,24 +23,29 @@ export class SupplierCreateComponent implements OnInit {
   codepost!: number;
 
   insertSupplier() {
-    this.objetohttp.post(this.urlapi, {
-      "nit": this.nitinsert,
-      "namesupplier": this.nombreinsert,
-      "address": this.direccioninsert,
-      "email": this.emailinsert,
-      "phone": this.telefonoinsert
-    }, {
-      observe: 'response'
-    }).subscribe(
-      response => {
-        this.codepost = response.status;
-        this.nitinsert = "";
-        this.nombreinsert = "";
-        this.direccioninsert = "";
-        this.emailinsert = "";
-        this.telefonoinsert = "";
-      }
-    )
+    if(!this.nitinsert || this.direccioninsert || this.emailinsert || this.nombreinsert || this.telefonoinsert){
+      this.codepost = 400;
+    }else{
+      
+      this.objetohttp.post(this.urlapi, {
+        "nit": this.nitinsert,
+        "namesupplier": this.nombreinsert,
+        "address": this.direccioninsert,
+        "email": this.emailinsert,
+        "phone": this.telefonoinsert
+      }, {
+        observe: 'response'
+      }).subscribe(
+        response => {
+          this.codepost = response.status;
+          this.nitinsert = "";
+          this.nombreinsert = "";
+          this.direccioninsert = "";
+          this.emailinsert = "";
+          this.telefonoinsert = "";
+        }
+      )
+    }    
 
   }
   ngOnInit(): void {
