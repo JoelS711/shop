@@ -7,10 +7,31 @@
                <h3 class="salesCity__title">Sales by City</h3>
             </figure>
             <div class="salesCity__buttons">
-                <button class="salesCity__btn">Bogota</button>
-                <button class="salesCity__btn">Medellin</button>
-                <button class="salesCity__btn">Cali</button>
+                <button class="salesCity__btn" (click)="getConsolidated('Bogota')">Bogota</button>
+                <button class="salesCity__btn" (click)="getConsolidated('Medellin')">Medellin</button>
+                <button class="salesCity__btn" (click)="getConsolidated('Cali')">Cali</button>
             </div>
+            <span *ngIf="codeget==200" style="color: rgb(80, 255, 0)">successful query</span>
+            <span *ngIf="codeget==204" style="color: rgb(255, 209, 6)">there is no consolidated</span>
+            <span *ngIf="codeget==500" style="color: red">consolidated not consulted</span>
         </div>
+        <table class="salesCity__table" *ngIf="content">
+            <thead>
+                <tr>
+                    <th class="salesCity__table--data">City</th>
+                    <th class="salesCity__table--data">Iva</th>
+                    <th class="salesCity__table--data">Total</th>
+                    <th class="salesCity__table--data">Total + Iva</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="salesCity__table--data">{{content.city}}</td>
+                    <td class="salesCity__table--data">{{iva}}</td>
+                    <td class="salesCity__table--data">{{totalsale}}</td>
+                    <td class="salesCity__table--data">{{total}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
