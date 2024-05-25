@@ -7,10 +7,31 @@
                 <h3 class="clientList__title">List of Clients by City</h3>
             </figure>
             <div class="clientList__buttons">
-                <button class="clientList__btn">Bogota</button>
-                <button class="clientList__btn">Medellin</button>
-                <button class="clientList__btn">Cali</button>
+                <button class="clientList__btn" (click)="getReport('Bogota')">Bogota</button>
+                <button class="clientList__btn" (click)="getReport('Medellin')">Medellin</button>
+                <button class="clientList__btn" (click)="getReport('Cali')">Cali</button>
             </div>
+            <span *ngIf="codeget==200" style="color: rgb(80, 255, 0)">successful query</span>
+            <span *ngIf="codeget==204" style="color: rgb(255, 209, 6)">there is no report</span>
+            <span *ngIf="codeget==500" style="color: red">report not consulted</span>
         </div>
+        <table class="clientList__table" *ngIf="data">
+            <thead>
+                <tr>
+                    <th class="clientList__table--data">City</th>
+                    <th class="clientList__table--data">Id</th>
+                    <th class="clientList__table--data">Name</th>
+                    <th class="clientList__table--data">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of data">
+                    <td class="clientList__table--data">{{client.city}}</td>
+                    <td class="clientList__table--data">{{client.identification}}</td>
+                    <td class="clientList__table--data">{{client.name}}</td>
+                    <td class="clientList__table--data">{{client.total | currency:''}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>

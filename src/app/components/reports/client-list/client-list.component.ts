@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,10 +10,17 @@ export class ClientListComponent {
 
   constructor(private clientehttp: HttpClient) { }
 
-  apiURL: string = "http://localhost:8082/api/";
-  apiURLClient: string = "http://localhost:8081/api/";
-  apiURLProduct: string = "http://localhost:8080/api/";
-  apiURLConsolidated: string = "http://localhost:8085/api/";
+  apiURL: string = "http://localhost:8086/api/report";
+  resp:any;
+  data:any;
+  codeget:number=0;
+  getReport(city: string){
 
+    this.resp = this.clientehttp.get(this.apiURL + "/city/" + city,{observe: 'response'});
+    this.resp.subscribe((response: HttpResponse<any>) => {
+      this.data = response.body;
+      this.codeget = response.status;
+    })
+  }
 
 }
