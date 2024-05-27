@@ -23,7 +23,7 @@ export class SupplierCreateComponent implements OnInit {
   codepost!: number;
 
   insertSupplier() {
-    if(!this.nitinsert || this.direccioninsert || this.emailinsert || this.nombreinsert || this.telefonoinsert){
+    if(!this.nitinsert || !this.direccioninsert || !this.emailinsert || !this.nombreinsert || !this.telefonoinsert){
       this.codepost = 400;
     }else{
       

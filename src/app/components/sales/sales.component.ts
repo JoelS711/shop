@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+interface Product {
+  code: number;
+  name: string;
+  quantity: number;
+  price: number;
+  originalPrice: number;
+  totalPrice: number;
+}
 
 @Component({
   selector: 'app-sales',
@@ -51,7 +59,8 @@ export class SalesComponent implements OnInit {
         .subscribe((data: any) => {
           const productData = data[0];
           this.addProducts[index].name = productData.name;
-          this.addProducts[index].price = productData.saleprice;
+          this.addProducts[index].originalPrice = productData.saleprice;
+          this.calcPrice(index);
         });
     }
 
@@ -60,21 +69,21 @@ export class SalesComponent implements OnInit {
   calcPrice(index: number) {
 const products = this.addProducts[index];
 const quant = products.quant;
-const price = products.price;
+const price = products.originalPrice;
 console.log("Cantidad antes del if "+quant);
 console.log("Precio antes del if "+price);
 if (!isNaN(quant) && quant > 0) {
-  
+  let totalPrice = quant * price;
 console.log("Cantidad antes del if "+quant);
 console.log("Precio antes del if "+price);
-products.price =  quant * price;
-this.salesDetail.push({
+products.totalPrice =  totalPrice;
+/*this.salesDetail.push({
   "productquantity": quant,
   "codeproduct": products.code,
   "ivavalue": products.price * 0.19,
   "totalsale": products.price,
   "salevalue": (products.price * 0.19) + products.price
-});
+});*/
 }else{
   
 console.log("Cantidad antes del if "+quant);
@@ -82,6 +91,7 @@ console.log("Precio antes del if "+price);
   products.price =0;
 }
 
+this.updateSalesDetail();
 
   /*const quantity = product.quant;
   const price = product.price;
@@ -122,13 +132,30 @@ console.log("else "+product.price);
   }*/
   }
 
+
+  updateSalesDetail() {
+    this.salesDetail = this.addProducts.map(product => ({
+      productquantity: product.quant,
+      codeproduct: product.code,
+      ivavalue: product.totalPrice * 0.19,
+      totalsale: product.totalPrice,
+      salevalue: product.totalPrice * 1.19
+    }));
+
+    this.totalSale();
+    this.totalIva();
+    this.totalPlusIva();
+  }
+
   addProducts: any []=[];
   addLine(){
     this.addProducts.push({
       code: 0,
       name: "",
       quant: 0,
-      price:0
+      price:0,
+      originalPrice: 0,
+      totalPrice: 0
     })
   }
 
@@ -137,6 +164,7 @@ console.log("else "+product.price);
   removeLine(){
     if (this.addProducts.length > 1) {
       this.addProducts.pop();
+      this.updateSalesDetail();
     }
   }
 
@@ -145,7 +173,7 @@ console.log("else "+product.price);
   totalSale(){
     let total = 0;
     for (let producto of this.addProducts) {
-        total += producto.price;
+        total += producto.totalPrice;
     }
     this.totalsale = total
     return total;
