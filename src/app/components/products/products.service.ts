@@ -25,27 +25,34 @@ export class ProductsService {
           const lector = new FileReader();
           lector.onloadend=(e)=>{
             let contenido :string = lector.result as string;
+            contenido = contenido.replace(/;/g, ',');
             let lineas_separadas=contenido.split("\n");
+            lineas_separadas.shift();
 
             for (let linea_actual of lineas_separadas){
-              linea_actual.replace(";",",");
-              let columnas = linea_actual.split(";");
-
-              this.httpobject.post(this.apiURL,
-              {
-                "code":columnas[0],
-                "name":columnas[1],
-                "nitprovider":columnas[2],
-                "purchaseprice":columnas[3],
-                "iva":columnas[4],
-                "saleprice":columnas[5]
-              },{
-                observe:'response'
-              }).subscribe(
-                (response:any)=>{
-                  this.resultados.push(response.status);
+              linea_actual = linea_actual.trim();
+              if(linea_actual){
+                let columnas = linea_actual.split(",");
+                if(columnas.length === 6){
+                  let product = {
+                    code: parseInt(columnas[0].trim(), 10),
+                    name: columnas[3].trim(),
+                    nitprovider: parseInt(columnas[1].trim(), 10),
+                    purchaseprice: parseFloat(columnas[4].trim()),
+                    iva: parseFloat(columnas[2].trim()),
+                    saleprice: parseFloat(columnas[5].trim())
+                  };
+  
+                  console.log('Enviando producto:', product);
+                  this.httpobject.post(this.apiURL,product,{
+                    observe:'response'
+                  }).subscribe(
+                    (response:any)=>{
+                      this.resultados.push(response.status);
+                    }
+                  );
                 }
-              );
+              }
             }
             resolve(this.resultados);
           }
