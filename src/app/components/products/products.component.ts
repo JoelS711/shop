@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   //variable contenedora de contenidos
   contenido: any;
   //url api get
-  urlapiGET: string = "http://localhost:8080/api/products";
+  urlapiGET: string = "https://shop-service-products.onrender.com/api/products";
 
  
 

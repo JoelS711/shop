@@ -12,7 +12,7 @@ export class ClientDeleteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  urlapi: string = "http://localhost:8081/api/clients";
+  urlapi: string = "https://shop-service-client-provider.onrender.com/api/clients";
   ceduladelete!: string;
   codedelete!: number;
   eliminarCliente() {

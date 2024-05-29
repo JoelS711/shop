@@ -25,11 +25,11 @@ export class SalesComponent implements OnInit {
 
   constructor(private clientehttp: HttpClient) { }
 
-  apiURL: string = "http://localhost:8082/api/";
-  apiURLClient: string = "http://localhost:8081/api/";
-  apiURLProduct: string = "http://localhost:8080/api/";
-  apiURLConsolidated: string = "http://localhost:8085/api/";
-  apiURLReport: string = "http://localhost:8086/api/";
+  apiURL: string = "https://shop-service-sales.onrender.com/api/";
+  apiURLClient: string = "https://shop-service-client-provider.onrender.com/api/";
+  apiURLProduct: string = "https://shop-service-products.onrender.com/api/";
+  apiURLConsolidated: string = "https://shop-service-consolidated.onrender.com/api/";
+  apiURLReport: string = "https://shop-service-report.onrender.com/api/";
 
   consecutivo !: any;
 

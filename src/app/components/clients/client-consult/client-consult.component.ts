@@ -12,7 +12,7 @@ export class ClientConsultComponent implements OnInit{
   ngOnInit(): void {
   }
   res: any;
-  urlapi: string = "http://localhost:8081/api/clients";
+  urlapi: string = "https://shop-service-client-provider.onrender.com/api/clients";
   cont:any;
   cedulasearch!: string;
   contenido: any;

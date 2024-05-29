@@ -14,7 +14,7 @@ export class ClientUpdateComponent implements OnInit {
   }
   res: any;
   contenido: any;
-  urlapi: string = "http://localhost:8081/api/clients";
+  urlapi: string = "https://shop-service-client-provider.onrender.com/api/clients";
 
   cedulaupdate!: string;
   direccionupdate!: string;

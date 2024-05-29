@@ -10,7 +10,7 @@ export class ClientListComponent {
 
   constructor(private clientehttp: HttpClient) { }
 
-  apiURL: string = "http://localhost:8086/api/report";
+  apiURL: string = "https://shop-service-report.onrender.com/api/report";
   resp:any;
   data:any;
   codeget:number=0;

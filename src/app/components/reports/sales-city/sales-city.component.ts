@@ -10,7 +10,7 @@ export class SalesCityComponent {
   constructor(private objetohttp: HttpClient) { }
 
   
-  apiURLConsolidated: string = "http://localhost:8085/api/consolidated";
+  apiURLConsolidated: string = "https://shop-service-consolidated.onrender.com/api/consolidated";
   codeget:number=0;
   res:any;
   content:any;

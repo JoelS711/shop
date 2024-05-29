@@ -13,7 +13,7 @@ export class ClientCreateComponent implements OnInit {
 
   res: any;
   contenido: any;
-  urlapi: string = "http://localhost:8081/api/clients";
+  urlapi: string = "https://shop-service-client-provider.onrender.com/api/clients";
 
   cedulainsert!: string;
   direccioninsert!: string;

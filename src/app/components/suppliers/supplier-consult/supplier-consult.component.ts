@@ -12,7 +12,7 @@ export class SupplierConsultComponent implements OnInit{
   ngOnInit(): void {
   }
   res: any;
-  urlapi: string = "http://localhost:8081/api/suppliers";
+  urlapi: string = "https://shop-service-client-provider.onrender.com/api/suppliers";
   cont:any;
   nitsearch!: string;
   contenido: any;
