@@ -23,7 +23,7 @@ export class SupplierUpdateComponent implements OnInit {
   telefonoupdate!: string;
   codeput!: number;
   updateSupplier() {
-    if(!this.nitupdate || this.direccionupdate || this.emailupdate || this.nombreupdate || this.telefonoupdate){
+    if(!this.nitupdate || !this.direccionupdate || !this.emailupdate || !this.nombreupdate || !this.telefonoupdate){
       this.codeput = 400;
     }else{
       this.objetohttp.put(this.urlapi + "/nit/" + this.nitupdate,

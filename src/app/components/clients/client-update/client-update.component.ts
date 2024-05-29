@@ -23,7 +23,7 @@ export class ClientUpdateComponent implements OnInit {
   telefonoupdate!: string;
   codeput!: number;
   updateClient() {
-    if(!this.cedulaupdate || !this.direccionupdate || this.emailupdate || this.nombreupdate || this.telefonoupdate){
+    if(!this.cedulaupdate || !this.direccionupdate || !this.emailupdate || !this.nombreupdate || !this.telefonoupdate){
 this.codeput=400;
     }else{
       this.objetohttp.put(this.urlapi + "/identification/" + this.cedulaupdate,
