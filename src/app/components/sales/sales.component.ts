@@ -20,7 +20,7 @@ export class SalesComponent implements OnInit {
   ngOnInit(): void {
     this.getConsecutivo();
     this.clientedata = { "nameClient": "" };
-    
+
   }
 
   constructor(private clientehttp: HttpClient) { }
@@ -51,7 +51,7 @@ export class SalesComponent implements OnInit {
   }
 
 
-  productsData: any []= [];
+  productsData: any[] = [];
   getProduct(index: number) {
     const cod = this.addProducts[index].code;
     if (cod) {
@@ -67,69 +67,25 @@ export class SalesComponent implements OnInit {
   }
 
   calcPrice(index: number) {
-const products = this.addProducts[index];
-const quant = products.quant;
-const price = products.originalPrice;
-console.log("Cantidad antes del if "+quant);
-console.log("Precio antes del if "+price);
-if (!isNaN(quant) && quant > 0) {
-  let totalPrice = quant * price;
-console.log("Cantidad antes del if "+quant);
-console.log("Precio antes del if "+price);
-products.totalPrice =  totalPrice;
-/*this.salesDetail.push({
-  "productquantity": quant,
-  "codeproduct": products.code,
-  "ivavalue": products.price * 0.19,
-  "totalsale": products.price,
-  "salevalue": (products.price * 0.19) + products.price
-});*/
-}else{
-  
-console.log("Cantidad antes del if "+quant);
-console.log("Precio antes del if "+price);
-  products.price =0;
-}
+    const products = this.addProducts[index];
+    const quant = products.quant;
+    const price = products.originalPrice;
+    console.log("Cantidad antes del if " + quant);
+    console.log("Precio antes del if " + price);
+    if (!isNaN(quant) && quant > 0) {
+      let totalPrice = quant * price;
+      console.log("Cantidad antes del if " + quant);
+      console.log("Precio antes del if " + price);
+      products.totalPrice = totalPrice;
+    } else {
 
-this.updateSalesDetail();
+      console.log("Cantidad antes del if " + quant);
+      console.log("Precio antes del if " + price);
+      products.price = 0;
+    }
 
-  /*const quantity = product.quant;
-  const price = product.price;
-  const p = product.price;
-console.log("Cantidad antes del if "+quantity);
-console.log("Precio antes del if "+price);
-  if (!isNaN(quantity) && price !== null && price !== undefined && price > 0) { // Verificar si la cantidad es un número válido y el precio es mayor que cero
-    product.price = quantity * price;
-    console.log("Despues del if "+quantity);
-console.log("Despues del if "+price);
-console.log("Despues del if "+product.price);
-    this.salesDetail.push({
-      "productquantity": quantity,
-      "codeproduct": product.code,
-      "ivavalue": product.price * 0.19,
-      "totalsale": product.price,
-      "salevalue": (product.price * 0.19) + product.price
-    });
-  } else {
-    console.log("else "+quantity);
-console.log("else "+price);
-console.log("else "+product.price);
-  }
-    /*const quantity = parseFloat(product.quant) || 0;
-  const price = product.price;
+    this.updateSalesDetail();
 
-  if (price>0 && quantity>0) {
-    product.price = quantity * price;
-    this.salesDetail.push({
-      "productquantity": quantity,
-       "codeproduct": product.code,
-       "ivavalue": product.price*0.19,
-       "totalsale": product.price,
-       "salevalue": (product.price*0.19)+product.price
-    })
-  } else {
-    product.price = 0;
-  }*/
   }
 
 
@@ -147,21 +103,21 @@ console.log("else "+product.price);
     this.totalPlusIva();
   }
 
-  addProducts: any []=[];
-  addLine(){
+  addProducts: any[] = [];
+  addLine() {
     this.addProducts.push({
       code: 0,
       name: "",
       quant: 0,
-      price:0,
+      price: 0,
       originalPrice: 0,
       totalPrice: 0
     })
   }
 
-  salesDetail: any []=[]
+  salesDetail: any[] = []
 
-  removeLine(){
+  removeLine() {
     if (this.addProducts.length > 1) {
       this.addProducts.pop();
       this.updateSalesDetail();
@@ -170,23 +126,23 @@ console.log("else "+product.price);
 
 
   totalsale: number = 0;
-  totalSale(){
+  totalSale() {
     let total = 0;
     for (let producto of this.addProducts) {
-        total += producto.totalPrice;
+      total += producto.totalPrice;
     }
     this.totalsale = total
     return total;
   }
 
-  totaliva:number=0;
+  totaliva: number = 0;
   totalIva(): number {
     this.totaliva = this.totalsale * 0.19
     return Number(this.totaliva.toFixed(2));
   }
 
-  totalplusiva: number=0;
-  totalPlusIva(){
+  totalplusiva: number = 0;
+  totalPlusIva() {
     this.totalplusiva = this.totalsale + this.totaliva
     return Number(this.totalplusiva.toFixed(2));
   }
@@ -205,13 +161,13 @@ console.log("else "+product.price);
     return true;
   }
 
-  submitted:boolean=false;
-  codeResponse:any;
-  postVenta() { 
-      if(this.validateForm()){
-        this.clientehttp.post(this.apiURL + "sales",
+  submitted: boolean = false;
+  codeResponse: any;
+  postVenta() {
+    if (this.validateForm()) {
+      this.clientehttp.post(this.apiURL + "sales",
         {
-         "city": this.city,
+          "city": this.city,
           "identification": this.cedulacliente,
           "name": this.clientedata.name,
           "salecode": this.consecutivo,
@@ -223,25 +179,25 @@ console.log("else "+product.price);
         observe: 'response'
       }).subscribe(
         (response: any) => {
-   
+
           this.codeResponse = response.status;
-      })
+        })
       this.consolidated();
       this.report();
-     
-      
-      }
-     
-    
-    
+
+
+    }
+
+
+
   }
 
- 
 
 
-  city:any;
-  respConsolidate:any;
-  consolidated(){
+
+  city: any;
+  respConsolidate: any;
+  consolidated() {
     this.clientehttp.post(this.apiURLConsolidated + "consolidated", {
       "city": this.city,
       "iva": this.totaliva,
@@ -252,15 +208,15 @@ console.log("else "+product.price);
     }).subscribe(
       response => {
         this.respConsolidate = response.status;
-            }
+      }
     )
   }
 
-  respReport:any;
-  report(){
+  respReport: any;
+  report() {
     this.clientehttp.post(this.apiURLReport + "report", {
       "city": this.city,
-      "identification":this.cedulacliente,
+      "identification": this.cedulacliente,
       "name": this.clientedata.name,
       "total": this.totalplusiva
     }, {
@@ -268,7 +224,7 @@ console.log("else "+product.price);
     }).subscribe(
       response => {
         this.respReport = response.status;
-            }
+      }
     )
   }
 
